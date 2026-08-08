@@ -234,6 +234,16 @@
         "subheading": "Complete tire service solutions for every need"
       }
     },
+    "cntire_hot_sellers_S4": {
+      "type": "cntire-hot-sellers",
+      "settings": {
+        "badge_text": "★ HOT SELLERS",
+        "title": "Hot Sellers",
+        "subheading": "Professional grade equipment chosen by 500+ distributors worldwide",
+        "quote_url": "/pages/rfq-center",
+        "quote_button_label": "Get Quote"
+      }
+    },
     "value_props_section_g7zFxf": {
       "type": "value-props-section",
       "blocks": {
@@ -943,6 +953,7 @@
     "cn_tire_hero_WGbi8H",
     "cntire_search_6Mz4e8",
     "cntire_categories_TzXUM8",
+    "cntire_hot_sellers_S4",
     "value_props_section_g7zFxf",
     "tech_section_rNcyt8",
     "cn_tire_market_gqTXCW",

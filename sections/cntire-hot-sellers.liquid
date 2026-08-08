@@ -1,0 +1,178 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  .ct-hot-sellers-{{ section.id }} {
+    background-color: {{ section.settings.background_color }};
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+{%- endstyle -%}
+
+<section class="ct-hot-sellers ct-hot-sellers-{{ section.id }} section-{{ section.id }}-padding">
+  <div class="ct-s04-header">
+    {%- if section.settings.badge_text != blank -%}
+      <span class="ct-s04-badge">{{ section.settings.badge_text }}</span>
+    {%- endif -%}
+    {%- if section.settings.title != blank -%}
+      <h2>{{ section.settings.title }}</h2>
+    {%- endif -%}
+    {%- if section.settings.subheading != blank -%}
+      <p>{{ section.settings.subheading }}</p>
+    {%- endif -%}
+  </div>
+
+  <div class="ct-s04-grid">
+    {% assign hot_collection = section.settings.collection %}
+    {% assign ct04_prods = hot_collection.products %}
+    
+    {% if ct04_prods.size == 0 or hot_collection == blank %}
+      {% assign ct04_prods = '' | split: '' %}
+      {% assign p1 = all_products['1pc-2k-hd-front-dash-cam-for-car-with-ips-screen-night-vision-loop-recording-included-32g-storage-card-140-degree-wide-angle-wifi-app-control-front-dashcam'] %}
+      {% assign p2 = all_products['combo-package-1-premium-self-sealing'] %}
+      {% assign p3 = all_products['combo-package-2-entry-level-self-sealing'] %}
+      {% assign p4 = all_products['combo-package-3-sidewall-repair'] %}
+      {% assign p5 = all_products['cb150p-wheel-balancer'] %}
+      {% assign p6 = all_products['cb450p-wheel-balancer'] %}
+      {% assign p7 = all_products['dual-heating-tire-vulcanizer-lk-j0008'] %}
+      {% assign p8 = all_products['entry-level-self-sealing-tire-machine-lk-21-aa'] %}
+      {% if p1 %}{% assign ct04_prods = ct04_prods | concat: p1 %}{% endif %}
+      {% if p2 %}{% assign ct04_prods = ct04_prods | concat: p2 %}{% endif %}
+      {% if p3 %}{% assign ct04_prods = ct04_prods | concat: p3 %}{% endif %}
+      {% if p4 %}{% assign ct04_prods = ct04_prods | concat: p4 %}{% endif %}
+      {% if p5 %}{% assign ct04_prods = ct04_prods | concat: p5 %}{% endif %}
+      {% if p6 %}{% assign ct04_prods = ct04_prods | concat: p6 %}{% endif %}
+      {% if p7 %}{% assign ct04_prods = ct04_prods | concat: p7 %}{% endif %}
+      {% if p8 %}{% assign ct04_prods = ct04_prods | concat: p8 %}{% endif %}
+    {% endif %}
+    
+    {% assign limit_count = section.settings.products_to_show | default: 8 %}
+    {% for product in ct04_prods limit: limit_count %}
+      {% render 'card-product', card_product: product %}
+    {% endfor %}
+  </div>
+</section>
+
+<style>
+.ct-hot-sellers{padding:60px 40px;background:#F5F5F5;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif}
+.ct-s04-header{text-align:center;margin-bottom:40px}
+.ct-s04-badge{background:#F26522;color:#fff;padding:4px 12px;font-size:11px;border-radius:4px;display:inline-block;margin-bottom:8px;font-weight:600;letter-spacing:.5px}
+.ct-s04-header h2{font-size:32px;color:#1A1A2E;margin:0 0 10px;font-weight:700}
+.ct-s04-header p{font-size:16px;color:#666;margin:0}
+.ct-s04-grid{display:grid!important;grid-template-columns:repeat(4,1fr)!important;gap:24px!important;max-width:1400px;margin:0 auto}
+.ct04-card{background:#fff;border:1px solid #E5E5E5;border-radius:12px;overflow:hidden;position:relative;transition:box-shadow .3s;display:flex;flex-direction:column}
+.ct04-card:hover{box-shadow:0 8px 30px rgba(0,0,0,.1)}
+.ct04-img-link{display:block;height:200px;overflow:hidden;background:#F8F8F8;position:relative;text-decoration:none;flex-shrink:0}
+.ct04-img-link img{width:100%;height:100%;object-fit:cover;transition:transform .3s}
+.ct04-card:hover .ct04-img-link img{transform:scale(1.05)}
+.ct04-no-img{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:48px;color:#ccc;background:#f0f0f0}
+.ct04-badge{position:absolute;top:12px;left:12px;background:#F26522;color:#fff;padding:6px 12px;font-size:11px;border-radius:4px;font-weight:700;text-transform:uppercase;z-index:2}
+.ct04-info{padding:16px;flex:1;display:flex;flex-direction:column}
+.ct04-cat{font-size:11px;color:#F26522;font-weight:700;letter-spacing:.5px;margin-bottom:6px}
+.ct04-name{font-size:14px;color:#1A1A2E;text-decoration:none;font-weight:600;line-height:1.4;margin-bottom:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;height:2.8em;text-overflow:ellipsis}
+.ct04-name:hover{color:#F26522}
+.ct04-rating{font-size:12px;margin-bottom:8px}
+.ct04-price{font-size:18px;font-weight:700;color:#1A1A2E;margin-bottom:4px}
+.ct04-was{font-size:12px;color:#999;margin-bottom:12px}
+.ct04-btns{display:flex;gap:8px;margin-top:auto}
+.ct04-cart{flex:1;background:#1A1A2E;color:#fff;border:none;padding:10px;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;text-align:center}
+.ct04-cart:hover{background:#F26522}
+.ct04-cart:disabled{opacity:.7;cursor:wait}
+.ct04-quote{flex:1;background:#fff;color:#1A1A2E;border:2px solid #1A1A2E;padding:10px;border-radius:6px;font-size:13px;font-weight:600;text-decoration:none;text-align:center;transition:all .2s;display:inline-flex;align-items:center;justify-content:center}
+.ct04-quote:hover{background:#1A1A2E;color:#fff}
+@media(max-width:1200px){.ct-s04-grid{grid-template-columns:repeat(3,1fr)!important}}
+@media(max-width:900px){.ct-s04-grid{grid-template-columns:repeat(2,1fr)!important}.ct-hot-sellers{padding:40px 20px}}
+@media(max-width:600px){.ct-s04-grid{grid-template-columns:1fr!important}}
+</style>
+
+{% schema %}
+{
+  "name": "CnTire Hot Sellers",
+  "tag": "section",
+  "class": "section-cntire-hot-sellers",
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge Text",
+      "default": "★ HOT SELLERS"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "title",
+      "label": "Heading",
+      "default": "Hot Sellers"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Professional grade equipment chosen by 500+ distributors worldwide"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "min": 2,
+      "max": 16,
+      "step": 1,
+      "default": 8,
+      "label": "Products to show"
+    },
+    {
+      "type": "url",
+      "id": "quote_url",
+      "label": "Get Quote Link"
+    },
+    {
+      "type": "text",
+      "id": "quote_button_label",
+      "label": "Get Quote Button Label",
+      "default": "Get Quote"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#F5F5F5"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 60
+    }
+  ],
+  "presets": [
+    {
+      "name": "CnTire Hot Sellers"
+    }
+  ]
+}
+{% endschema %}
