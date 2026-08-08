@@ -1530,6 +1530,9 @@ document.addEventListener('click', function(e) {
     }
 
     if (cartEl && typeof cartEl.renderContents === 'function') {
+      if (cartEl.classList.contains('is-empty')) {
+        cartEl.classList.remove('is-empty');
+      }
       cartEl.renderContents(res);
     } else if (typeof cartEl?.open === 'function') {
       cartEl.open();
