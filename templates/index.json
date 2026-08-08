@@ -240,8 +240,13 @@
         "badge_text": "★ HOT SELLERS",
         "title": "Hot Sellers",
         "subheading": "Professional grade equipment chosen by 500+ distributors worldwide",
+        "collection": "tire-service-equipment",
+        "products_to_show": 8,
         "quote_url": "/pages/rfq-center",
-        "quote_button_label": "Get Quote"
+        "quote_button_label": "Get Quote",
+        "background_color": "#f5f5f5",
+        "padding_top": 60,
+        "padding_bottom": 60
       }
     },
     "value_props_section_g7zFxf": {
@@ -842,9 +847,9 @@
         "image": "shopify://shop_images/cntire-rfq-quote.png",
         "products_label": "Products of Interest",
         "submit_text": "Submit Your Quote Request",
-        "background_color": "#F8F8F8",
-        "heading_color": "#1A1A2E",
-        "accent_color": "#F26522",
+        "background_color": "#f8f8f8",
+        "heading_color": "#1a1a2e",
+        "accent_color": "#f26522",
         "padding_top": 80,
         "padding_bottom": 80
       }

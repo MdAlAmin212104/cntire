@@ -18,7 +18,7 @@
 {%- endstyle -%}
 
 <section class="ct-hot-sellers ct-hot-sellers-{{ section.id }} section-{{ section.id }}-padding">
-  <div class="ct-s04-header">
+  <div class="ct-s04-header page-width">
     {%- if section.settings.badge_text != blank -%}
       <span class="ct-s04-badge">{{ section.settings.badge_text }}</span>
     {%- endif -%}
@@ -30,7 +30,7 @@
     {%- endif -%}
   </div>
 
-  <div class="ct-s04-grid">
+  <div class="ct-s04-grid page-width">
     {% assign hot_collection = section.settings.collection %}
     {% assign ct04_prods = hot_collection.products %}
     
@@ -62,7 +62,7 @@
 </section>
 
 <style>
-.ct-hot-sellers{padding:60px 40px;background:#F5F5F5;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif}
+.ct-hot-sellers{background:#F5F5F5;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif}
 .ct-s04-header{text-align:center;margin-bottom:40px}
 .ct-s04-badge{background:#F26522;color:#fff;padding:4px 12px;font-size:11px;border-radius:4px;display:inline-block;margin-bottom:8px;font-weight:600;letter-spacing:.5px}
 .ct-s04-header h2{font-size:32px;color:#1A1A2E;margin:0 0 10px;font-weight:700}
@@ -89,7 +89,7 @@
 .ct04-quote{flex:1;background:#fff;color:#1A1A2E;border:2px solid #1A1A2E;padding:10px;border-radius:6px;font-size:13px;font-weight:600;text-decoration:none;text-align:center;transition:all .2s;display:inline-flex;align-items:center;justify-content:center}
 .ct04-quote:hover{background:#1A1A2E;color:#fff}
 @media(max-width:1200px){.ct-s04-grid{grid-template-columns:repeat(3,1fr)!important}}
-@media(max-width:900px){.ct-s04-grid{grid-template-columns:repeat(2,1fr)!important}.ct-hot-sellers{padding:40px 20px}}
+@media(max-width:900px){.ct-s04-grid{grid-template-columns:repeat(2,1fr)!important}
 @media(max-width:600px){.ct-s04-grid{grid-template-columns:1fr!important}}
 </style>
 
