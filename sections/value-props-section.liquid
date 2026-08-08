@@ -1,0 +1,231 @@
+<section class="value-section-{{ section.id }} page-width">
+  <div class="value-grid-{{ section.id }}">
+    {% for block in section.blocks %}
+      {% if block.type == 'value_box' %}
+        <div class="value-box-{{ section.id }}" style="background:{{ block.settings.bg_color }};" {{ block.shopify_attributes }}>
+          <h3 style="color: white;"><span class="heading-tiem-icon-{{ section.id }}"> {{ block.settings.icon }}</span> {{ block.settings.title }}</h3>
+          {% for i in (1..4) %}
+            {% assign item_icon = 'item_icon_' | append: i %}
+            {% assign item_title = 'item_title_' | append: i %}
+            {% assign item_text = 'item_text_' | append: i %}
+            {% if block.settings[item_title] != blank %}
+              <div class="value-item-{{ section.id }}">
+                <h4 style="color: white">
+                  <span class="value-item-icon-{{ section.id }}">
+                    {{ block.settings[item_icon] }}
+                  </span>
+                  {{ block.settings[item_title] }}
+                </h4>
+                <p>{{ block.settings[item_text] }}</p>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</section>
+
+<style>
+.value-section-{{ section.id }} {
+  padding-top: {{ section.settings.padding_top }}px;
+  padding-bottom: {{ section.settings.padding_bottom }}px;
+}
+.value-grid-{{ section.id }} {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.value-box-{{ section.id }} {
+  padding: 30px;
+  color: white;
+}
+.value-box-{{ section.id }} h3 {
+  font-size: 26px;
+  margin-bottom: 30px;
+  font-weight: 700;
+}
+.heading-tiem-icon-{{ section.id }}{
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 28px;
+  margin-bottom: 5px;
+}
+.value-item-{{ section.id }} {
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+.value-item-{{ section.id }}:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+.value-item-{{ section.id }} h4 {
+  font-size: 18px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+}
+.value-item-{{ section.id }} p {
+  font-size: 14px;
+  opacity: 0.9;
+  line-height: 1.6;
+}
+@media (max-width: 1024px) {
+  .value-grid-{{ section.id }} { grid-template-columns: 1fr; }
+}
+@media (max-width: 675px) {
+  .value-box-{{ section.id }} {
+  padding: 0px 20px;
+}
+}
+
+.value-box-{{ section.id }} h3 {
+  font-size: 26px;
+  margin-bottom: 30px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.value-icon-{{ section.id }} {
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 28px;
+}
+
+.value-icon-{{ section.id }} svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  fill: currentColor;
+  stroke: currentColor;
+}
+
+.value-item-{{ section.id }} h4 {
+  font-size: 18px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+}
+
+.value-item-icon-{{ section.id }} {
+  width: 20px;
+  height: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 20px;
+  margin-bottom: 5px;
+}
+
+.value-item-icon-{{ section.id }} svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  fill: currentColor;
+  stroke: currentColor;
+}
+</style>
+
+{% schema %}
+{
+  "name": "CnTire Value Props",
+  "tag": "section",
+  "class": "section-value-props",
+  "settings": [
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "default": 60
+    }
+  ],
+  "blocks": [
+    {
+      "type": "value_box",
+      "name": "Value Box",
+      "settings": [
+        { "type": "textarea", "id": "icon", "label": "Box icon", "default": "🏢" },
+        { "type": "text", "id": "title", "label": "Box title", "default": "For B2B Distributors & Wholesalers" },
+        { "type": "color", "id": "bg_color", "label": "Background color", "default": "#1A1A2E" },
+        { "type": "header", "content": "Item 1" },
+        { "type": "textarea", "id": "item_icon_1", "label": "Icon", "default": "🏭" },
+        { "type": "text", "id": "item_title_1", "label": "Title", "default": "OEM/ODM Available" },
+        { "type": "textarea", "id": "item_text_1", "label": "Text", "default": "Custom branding, specifications, and packaging. MOQ 1 unit for samples." },
+        { "type": "header", "content": "Item 2" },
+        { "type": "textarea", "id": "item_icon_2", "label": "Icon", "default": "🚢" },
+        { "type": "text", "id": "item_title_2", "label": "Title", "default": "Container Shipping" },
+        { "type": "textarea", "id": "item_text_2", "label": "Text", "default": "20FT/40HQ consolidation, LCL & FCL options. Freight forwarding support." },
+        { "type": "header", "content": "Item 3" },
+        { "type": "textarea", "id": "item_icon_3", "label": "Icon", "default": "💰" },
+        { "type": "text", "id": "item_title_3", "label": "Title", "default": "Flexible Payment" },
+        { "type": "textarea", "id": "item_text_3", "label": "Text", "default": "T/T, L/C, PayPal, Trade Assurance. Net-30 for verified buyers." },
+        { "type": "header", "content": "Item 4" },
+        { "type": "textarea", "id": "item_icon_4", "label": "Icon", "default": "📦" },
+        { "type": "text", "id": "item_title_4", "label": "Title", "default": "Sample Order OK" },
+        { "type": "textarea", "id": "item_text_4", "label": "Text", "default": "Sample fees deductible from bulk orders. Fast 7-day delivery." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "CnTire Value Props",
+      "blocks": [
+        {
+          "type": "value_box",
+          "settings": {
+            "icon": "🏢",
+            "title": "For B2B Distributors & Wholesalers",
+            "bg_color": "#1A1A2E"
+          }
+        },
+        {
+          "type": "value_box",
+          "settings": {
+            "icon": "🛒",
+            "title": "For Retail & Individual Buyers",
+            "bg_color": "#F26522",
+            "item_icon_1": "🔧",
+            "item_title_1": "Professional Quality",
+            "item_text_1": "Factory-direct pricing, no middlemen. ISO certified manufacturing.",
+            "item_icon_2": "🚚",
+            "item_title_2": "Fast Delivery",
+            "item_text_2": "7-15 days global shipping. Real-time tracking included.",
+            "item_icon_3": "💳",
+            "item_title_3": "Secure Payment",
+            "item_text_3": "Visa, Mastercard, PayPal, bank transfer. 256-bit SSL encryption.",
+            "item_icon_4": "🔄",
+            "item_title_4": "30-Day Returns",
+            "item_text_4": "No questions asked returns. Full refund within 30 days."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

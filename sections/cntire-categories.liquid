@@ -1,0 +1,227 @@
+<section class="category-section page-width" style="margin-top: 60px; margin-bottom: 60px;">
+  <div class="section-header">
+    {% if section.settings.badge_text != blank %}
+      <span class="section-badge">{{ section.settings.badge_text }}</span>
+    {% endif %}
+    {% if section.settings.heading != blank %}
+      <h2>{{ section.settings.heading }}</h2>
+    {% endif %}
+    {% if section.settings.subheading != blank %}
+      <p>{{ section.settings.subheading }}</p>
+    {% endif %}
+  </div>
+
+  {% liquid
+    assign home_menu = linklists[section.settings.menu]
+    assign use_menu = false
+    if home_menu and home_menu.links.size > 0
+      assign use_menu = true
+    endif
+  %}
+
+  <div class="category-grid">
+    {% if use_menu %}
+      {% for link in home_menu.links limit: 8 %}
+        {% assign collection_handle = link.url | remove: '/collections/' | remove_first: '/' %}
+        {% assign collection = collections[collection_handle] %}
+        {% if collection.description != blank %}
+          {% assign col_desc = collection.description | strip_html | truncate: 88 %}
+        {% else %}
+          {% assign col_desc = '' %}
+        {% endif %}
+
+        <div class="category-card">
+          <a href="{{ link.url }}" class="category-img-wrap">
+            {% if collection and collection.image %}
+              <img src="{{ collection.image | image_url: width: 600, height: 400, crop: 'center' }}" alt="{{ link.title }}" loading="lazy" width="400" height="300">
+            {% elsif collection and collection.products.first %}
+              <img src="{{ collection.products.first.featured_image | image_url: width: 600, height: 400 }}" alt="{{ link.title }}" loading="lazy" width="400" height="300">
+            {% else %}
+              <div class="category-img-placeholder" style="background: linear-gradient(135deg, #F26522 0%, #1A1A2E 100%);">
+                <img src="{{ section.settings.fallback_image | default: 'cntire-logo.png' | asset_url }}" alt="Product coming soon | CnTire.com" width="100%" height="100%" align="center">
+              </div>
+            {% endif %}
+          </a>
+          <div class="category-info">
+            <a href="{{ link.url }}" class="category-name">{{ link.title }}</a>
+            {% if col_desc != '' %}
+              <div class="category-meta">{{ col_desc }}</div>
+            {% else %}
+              <div class="category-meta">View All →</div>
+            {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+    {% else %}
+     {% for block in section.blocks %}
+        {% if block.type == 'category' %}
+          {% assign col = collections[block.settings.collection] %}
+          {% if col.description != blank %}
+            {% assign col_desc = col.description | strip_html | truncate: 120 %}
+          {% else %}
+            {% assign col_desc = block.settings.meta %}
+          {% endif %}
+          <a href="{{ block.settings.collection.url | default: block.settings.link }}" class="category-card" {{ block.shopify_attributes }}>
+            <div class="category-img-wrap">
+              {% if col.image %}
+                <img src="{{ col.image | image_url: width: 600, height: 400, crop: 'center' }}" alt="{{ col.title | default: block.settings.name }}" loading="lazy" width="400" height="300">
+              {% elsif col.products.first %}
+                <img src="{{ col.products.first.featured_image | image_url: width: 600, height: 400 }}" alt="{{ col.title | default: block.settings.name }}" loading="lazy" width="400" height="300">
+              {% else %}
+                <div class="category-img-placeholder" style="background: linear-gradient(135deg, #F26522 0%, #1A1A2E 100%);"><span class="ct-cat-icon">{{ block.settings.icon }}</span></div>
+              {% endif %}
+            </div>
+            <div class="category-info">
+              <div class="category-name">{{ col.title | default: block.settings.name }}</div>
+              <div class="category-meta">{{ col_desc }}</div>
+            </div>
+          </a>
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+  </div>
+</section>
+
+<style>
+.category-section {
+  background: white;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+.section-header { text-align: center;  }
+.section-badge {
+  background: #F26522; color: white; padding: 4px 12px; font-size: 11px;
+  border-radius: 4px; display: inline-block; margin-bottom: 8px; font-weight: 600;
+}
+.section-header h2 { font-size: 32px; color: #1A1A2E; margin: 0 0 10px; font-weight: 700; }
+.section-header p { font-size: 16px; color: #666; margin: 0; }
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.category-card {
+  border: 1px solid #E5E5E5;
+  border-radius: 12px;
+  overflow: hidden;
+  text-decoration: none;
+  transition: all 0.3s;
+  background: white;
+  display: block;
+}
+.category-card:hover { box-shadow: 0 8px 30px rgba(0,0,0,0.1); transform: scale(1.05); }
+.category-img-wrap {
+  height: 200px;
+  overflow: hidden;
+  background: #F8F8F8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.category-meta {
+  font-size: 12px;
+  color: #888;
+  margin-top: auto;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.4;
+}
+.category-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s;}
+.category-img-placeholder {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, #F26522 0%, #1A1A2E 100%);
+}
+.category-img-placeholder span { font-size: 48px; color: white; font-weight: 700; }
+.category-info { padding: 20px; }
+.ct-cat-icon { font-size: 48px; }
+.ct-cat-info { padding: 20px; flex: 1; display: flex; flex-direction: column; }
+.category-name { font-size: 15px; font-weight: 700; color: #1A1A2E; margin-bottom: 8px; text-decoration: none; display: block;}
+.category-name:hover { color: #F26522; }
+.category-meta { font-size: 12px; color: #888;  margin-top: auto;}
+@media (max-width: 1200px) { .category-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 900px) { .category-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .category-grid { grid-template-columns: 1fr; } }
+</style>
+
+{% schema %}
+{
+  "name": "CnTire Categories",
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge text",
+      "default": "★ CATEGORY FIRST STRATEGY"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Shop by Category"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Complete tire service solutions for every need"
+    },
+  ],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Category",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link (used if no collection selected)"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name",
+          "default": "New Arrival Products"
+        },
+        {
+          "type": "text",
+          "id": "meta",
+          "label": "Meta text",
+          "default": "Latest Arrivals | Limited Stock"
+        },
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Fallback icon (emoji)",
+          "default": "🔥"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 8,
+  "presets": [
+    {
+      "name": "CnTire Categories",
+      "blocks": [
+        { "type": "category", "settings": { "name": "New Arrival Products", "meta": "Latest Arrivals | Limited Stock", "icon": "🔥" } },
+        { "type": "category", "settings": { "name": "Self-Sealing Tire Machines", "meta": "Professional Grade | OEM Available", "icon": "🚗" } },
+        { "type": "category", "settings": { "name": "Tire Repair Equipment", "meta": "Vulcanizers & Testers | Hot Sale", "icon": "🔧" } },
+        { "type": "category", "settings": { "name": "Tire Service Equipment", "meta": "Changers | Balancers | Vulcanizers", "icon": "⚙️" } },
+        { "type": "category", "settings": { "name": "Self-Sealing Tires", "meta": "Commercial Grade | Bulk Ready", "icon": "🏭" } },
+        { "type": "category", "settings": { "name": "Auto Parts & Accessories", "meta": "1000+ SKUs | Fast Shipping", "icon": "🛠️" } },
+        { "type": "category", "settings": { "name": "Passenger Car Tires", "meta": "PCR | All Season | Performance", "icon": "🔩" } },
+        { "type": "category", "settings": { "name": "Wholesale Bulk Order", "meta": "20FT/40HQ | OEM Discounts", "icon": "📦" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

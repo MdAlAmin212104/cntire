@@ -1,0 +1,280 @@
+<section class="tech-section-{{ section.id }} page-width">
+  <div class="section-header-{{ section.id }}">
+    {% if section.settings.badge_text != blank %}
+      <span class="section-badge-{{ section.id }}">{{ section.settings.badge_text }}</span>
+    {% endif %}
+    {% if section.settings.heading != blank %}
+      <h2>{{ section.settings.heading }}</h2>
+    {% endif %}
+    {% if section.settings.subheading != blank %}
+      <p>{{ section.settings.subheading }}</p>
+    {% endif %}
+  </div>
+  <div class="tech-content-{{ section.id }} page-width">
+    <div class="tech-video-{{ section.id }}">
+  {% if section.settings.video_url %}
+    {{ section.settings.video_url | video_tag: image_size: '1100x', controls: true, class: 'tech-video-player-' | append: section.id }}
+  {% else %}
+    {% if section.settings.video_image %}
+      <img src="{{ section.settings.video_image | image_url: width: 1200 }}" alt="{{ section.settings.video_image.alt | escape }}" loading="lazy" width="{{ section.settings.video_image.width }}" height="{{ section.settings.video_image.height }}">
+    {% endif %}
+    <div class="play-button-{{ section.id }}"></div>
+  {% endif %}
+</div>
+    <div class="tech-steps-{{ section.id }}">
+      {% if section.settings.steps_heading != blank %}
+        <h3 style="margin-top: 0px;">{{ section.settings.steps_heading }}</h3>
+      {% endif %}
+      {% for block in section.blocks %}
+        {% if block.type == 'step' %}
+          <div class="tech-step-{{ section.id }}" {{ block.shopify_attributes }}>
+            <span class="step-num-{{ section.id }}">{{ forloop.index }}</span>
+            <div class="step-content-{{ section.id }}">
+              <h4>{{ block.settings.title }}</h4>
+              <p>{{ block.settings.text }}</p>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+      {% if section.settings.btn1_text != blank or section.settings.btn2_text != blank %}
+        <div class="tech-cta-{{ section.id }}">
+          {% if section.settings.btn1_text != blank %}
+            <a href="{{ section.settings.btn1_link }}" class="btn-primary-{{ section.id }}">{{ section.settings.btn1_text }}</a>
+          {% endif %}
+          {% if section.settings.btn2_text != blank %}
+            <a href="{{ section.settings.btn2_link }}" class="btn-secondary-{{ section.id }}">{{ section.settings.btn2_text }}</a>
+          {% endif %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<style>
+.tech-section-{{ section.id }} {
+  padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px;
+  background: {{ section.settings.bg_color }};
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+.section-header-{{ section.id }} { text-align: center; margin-bottom: 50px; }
+.section-badge-{{ section.id }} {
+  background: {{ section.settings.accent_color }};
+  color: white;
+  padding: 4px 12px;
+  font-size: 11px;
+  border-radius: 4px;
+  display: inline-block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+.section-header-{{ section.id }} h2 {
+  font-size: 32px;
+  margin-bottom: 12px;
+  color: {{ section.settings.dark_color }};
+  font-weight: 700;
+}
+.section-header-{{ section.id }} p {
+  font-size: 18px;
+  color: #666;
+  margin: 0;
+}
+.tech-content-{{ section.id }} {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  margin: 0 auto;
+}
+.tech-video-{{ section.id }} {
+  aspect-ratio: 16/9;
+  background: {{ section.settings.dark_color }};
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+.tech-video-{{ section.id }} img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.play-button-{{ section.id }} {
+  width: 80px;
+  height: 80px;
+  background: {{ section.settings.accent_color }};
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+.play-button-{{ section.id }}::after {
+  content: "";
+  width: 0;
+  height: 0;
+  border-left: 24px solid white;
+  border-top: 16px solid transparent;
+  border-bottom: 16px solid transparent;
+  margin-left: 6px;
+}
+.tech-steps-{{ section.id }} h3 {
+  font-size: 28px;
+  margin-bottom: 30px;
+  color: {{ section.settings.dark_color }};
+  font-weight: 700;
+}
+.tech-step-{{ section.id }} {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+.step-num-{{ section.id }} {
+  width: 40px;
+  height: 40px;
+  background: {{ section.settings.accent_color }};
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+.step-content-{{ section.id }} h4 {
+  margin-bottom: 6px;
+  color: {{ section.settings.dark_color }};
+  font-weight: 600;
+  margin: 0px;
+}
+.step-content-{{ section.id }} p {
+  color: #666;
+  margin: 0;
+}
+.tech-cta-{{ section.id }} {
+  margin-top: 30px;
+  display: flex;
+  gap: 12px;
+}
+.btn-primary-{{ section.id }} {
+  background: {{ section.settings.accent_color }};
+  color: white;
+  padding: 14px 32px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-block;
+}
+.btn-secondary-{{ section.id }} {
+  background: transparent;
+  color: {{ section.settings.dark_color }};
+  padding: 14px 32px;
+  border: 2px solid {{ section.settings.dark_color }};
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration: none;
+  display: inline-block;
+}
+@media (max-width: 1024px) {
+  .tech-content-{{ section.id }} { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 675px) {
+  .tech-cta-{{ section.id }}{
+    display: block;
+  }
+  .btn-secondary-{{ section.id }}{
+    margin-top: 15px;
+  }
+}
+
+.tech-video-player-{{ section.id }} {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+</style>
+
+{% schema %}
+{
+  "name": "CnTire Self-Sealing Tech",
+  "tag": "section",
+  "class": "section-tech",
+  "settings": [
+    { "type": "text", "id": "badge_text", "label": "Badge text", "default": "⭐ BRAND DIFFERENTIATOR" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Self-Sealing Tire Technology" },
+    { "type": "textarea", "id": "subheading", "label": "Subheading", "default": "Revolutionary puncture-proof tires for harsh road conditions" },
+    { "type": "image_picker", "id": "video_image", "label": "Video thumbnail image" },
+    { "type": "video", "id": "video_url", "label": "Video link (opens on play button click)" },
+    { "type": "text", "id": "steps_heading", "label": "Steps heading", "default": "How It Works" },
+    {
+      "type": "header",
+      "content": "Buttons"
+    },
+    { "type": "text", "id": "btn1_text", "label": "Primary button text", "default": "View Products" },
+    { "type": "url", "id": "btn1_link", "label": "Primary button link" },
+    { "type": "text", "id": "btn2_text", "label": "Secondary button text", "default": "Learn More" },
+    { "type": "url", "id": "btn2_link", "label": "Secondary button link" },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    { "type": "color", "id": "bg_color", "label": "Section background", "default": "#ffffff" },
+    { "type": "color", "id": "accent_color", "label": "Accent color", "default": "#F26522" },
+    { "type": "color", "id": "dark_color", "label": "Dark / text color", "default": "#1A1A2E" },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    { "type": "range", "id": "padding_top", "label": "Padding top", "min": 0, "max": 150, "step": 5, "default": 80 },
+    { "type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 0, "max": 150, "step": 5, "default": 80 }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title", "default": "Puncture Occurs" },
+        { "type": "textarea", "id": "text", "label": "Text", "default": "Nail, screw, or sharp object penetrates the tire" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "CnTire Self-Sealing Tech",
+      "blocks": [
+        {
+          "type": "step",
+          "settings": {
+            "title": "Puncture Occurs",
+            "text": "Nail, screw, or sharp object penetrates the tire"
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "Sealant Activates",
+            "text": "Proprietary compound coats and seals the puncture instantly"
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "Keep Driving",
+            "text": "Tire stays inflated. Drive safely to destination."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

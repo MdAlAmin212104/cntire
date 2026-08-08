@@ -1,0 +1,294 @@
+<section class="market-section-{{ section.id }}">
+  <div class="page-width">
+    {% if section.settings.badge_text != blank %}
+      <span class="section-badge-{{ section.id }}">{{ section.settings.badge_text }}</span>
+    {% endif %}
+    {% if section.settings.title != blank %}
+      <h2 class="section-title-{{ section.id }}">{{ section.settings.title }}</h2>
+    {% endif %}
+
+    {% if section.blocks.size > 0 %}
+      <div class="countries-row-{{ section.id }}">
+        {% for block in section.blocks %}
+          {% if block.type == 'country' %}
+            <span class="country-tag-{{ section.id }}" {{ block.shopify_attributes }}>
+              {{ block.settings.flag_emoji }} {{ block.settings.country_name }}
+            </span>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    {% if section.settings.stat_1_value != blank or section.settings.stat_2_value != blank or section.settings.stat_3_value != blank %}
+      <div class="stats-row-{{ section.id }}">
+        {% if section.settings.stat_1_value != blank %}
+          <div class="stat-item-{{ section.id }}">
+            <div class="stat-value-{{ section.id }}">{{ section.settings.stat_1_value }}</div>
+            <div class="stat-label-{{ section.id }}">{{ section.settings.stat_1_label }}</div>
+          </div>
+        {% endif %}
+        {% if section.settings.stat_2_value != blank %}
+          <div class="stat-item-{{ section.id }}">
+            <div class="stat-value-{{ section.id }}">{{ section.settings.stat_2_value }}</div>
+            <div class="stat-label-{{ section.id }}">{{ section.settings.stat_2_label }}</div>
+          </div>
+        {% endif %}
+        {% if section.settings.stat_3_value != blank %}
+          <div class="stat-item-{{ section.id }}">
+            <div class="stat-value-{{ section.id }}">{{ section.settings.stat_3_value }}</div>
+            <div class="stat-label-{{ section.id }}">{{ section.settings.stat_3_label }}</div>
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    {% if section.settings.testimonial_text != blank %}
+      <p class="market-testimonial-{{ section.id }}">
+        "{{ section.settings.testimonial_text }}"
+        <br><strong>— {{ section.settings.testimonial_author }}</strong>
+      </p>
+    {% endif %}
+  </div>
+</section>
+
+<style>
+.market-section-{{ section.id }} {
+  padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px;
+  background: {{ section.settings.background_color }};
+  text-align: center;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+.section-badge-{{ section.id }} {
+  background: {{ section.settings.accent_color }};
+  color: white;
+  padding: 4px 12px;
+  font-size: 11px;
+  border-radius: 4px;
+  display: inline-block;
+  margin-bottom: 20px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+.section-title-{{ section.id }} {
+  font-size: 32px;
+  margin-bottom: 30px;
+  color: {{ section.settings.heading_color }};
+  font-weight: 700;
+}
+.countries-row-{{ section.id }} {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin: 30px 0;
+}
+.country-tag-{{ section.id }} {
+  background: white;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-size: 14px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.stats-row-{{ section.id }} {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+.stat-item-{{ section.id }} {
+  background: {{ section.settings.heading_color }};
+  color: white;
+  padding: 30px 50px;
+  border-radius: 12px;
+  min-width: 180px;
+}
+.stat-value-{{ section.id }} {
+  font-size: 36px;
+  font-weight: 700;
+  color: {{ section.settings.accent_color }};
+  margin-bottom: 8px;
+}
+.stat-label-{{ section.id }} {
+  font-size: 14px;
+  opacity: 0.9;
+}
+.market-testimonial-{{ section.id }} {
+  margin-top: 40px;
+  font-style: italic;
+  color: #666;
+  font-size: 16px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+.market-testimonial-{{ section.id }} strong {
+  color: {{ section.settings.heading_color }};
+  font-style: normal;
+}
+@media (max-width: 768px) {
+  .stats-row-{{ section.id }} { flex-direction: column; align-items: center; }
+  .stat-item-{{ section.id }}{
+    width: 100%
+  }
+}
+</style>
+
+{% schema %}
+{
+  "name": "CnTire Market Presence",
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge text",
+      "default": "🌍 TRUST SIGNALS"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Trusted by Buyers in 50+ Countries"
+    },
+    {
+      "type": "header",
+      "content": "Stats"
+    },
+    {
+      "type": "text",
+      "id": "stat_1_value",
+      "label": "Stat 1 value",
+      "default": "12,500+"
+    },
+    {
+      "type": "text",
+      "id": "stat_1_label",
+      "label": "Stat 1 label",
+      "default": "Containers Delivered"
+    },
+    {
+      "type": "text",
+      "id": "stat_2_value",
+      "label": "Stat 2 value",
+      "default": "4.8/5"
+    },
+    {
+      "type": "text",
+      "id": "stat_2_label",
+      "label": "Stat 2 label",
+      "default": "Average Rating"
+    },
+    {
+      "type": "text",
+      "id": "stat_3_value",
+      "label": "Stat 3 value",
+      "default": "98.5%"
+    },
+    {
+      "type": "text",
+      "id": "stat_3_label",
+      "label": "Stat 3 label",
+      "default": "On-Time Delivery"
+    },
+    {
+      "type": "header",
+      "content": "Testimonial"
+    },
+    {
+      "type": "textarea",
+      "id": "testimonial_text",
+      "label": "Testimonial text",
+      "default": "Best Chinese tire supplier we've worked with in 5 years. Excellent quality and reliable delivery."
+    },
+    {
+      "type": "text",
+      "id": "testimonial_author",
+      "label": "Testimonial author",
+      "default": "Tunde A., Lagos, Nigeria"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Section background",
+      "default": "#F5F5F5"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading / stat block color",
+      "default": "#1A1A2E"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent color",
+      "default": "#F26522"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 60
+    }
+  ],
+  "blocks": [
+    {
+      "type": "country",
+      "name": "Country",
+      "settings": [
+        {
+          "type": "text",
+          "id": "flag_emoji",
+          "label": "Flag emoji",
+          "default": "🌍"
+        },
+        {
+          "type": "text",
+          "id": "country_name",
+          "label": "Country name",
+          "default": "Country"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 12,
+  "presets": [
+    {
+      "name": "CnTire Market Presence",
+      "blocks": [
+        { "type": "country", "settings": { "flag_emoji": "🇳🇬", "country_name": "Nigeria" } },
+        { "type": "country", "settings": { "flag_emoji": "🇰🇪", "country_name": "Kenya" } },
+        { "type": "country", "settings": { "flag_emoji": "🇿🇦", "country_name": "South Africa" } },
+        { "type": "country", "settings": { "flag_emoji": "🇸🇦", "country_name": "Saudi Arabia" } },
+        { "type": "country", "settings": { "flag_emoji": "🇦🇪", "country_name": "UAE" } },
+        { "type": "country", "settings": { "flag_emoji": "🇶🇦", "country_name": "Qatar" } },
+        { "type": "country", "settings": { "flag_emoji": "🇲🇽", "country_name": "Mexico" } },
+        { "type": "country", "settings": { "flag_emoji": "🇧🇷", "country_name": "Brazil" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

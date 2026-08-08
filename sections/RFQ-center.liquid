@@ -1,0 +1,452 @@
+<div class="rfq-page-{{ section.id }}">
+  <div class="page-width">
+    <div class="rfq-header-{{ section.id }}">
+      {% if section.settings.badge_text != blank %}
+        <span class="section-badge-{{ section.id }}">{{ section.settings.badge_text }}</span>
+      {% endif %}
+      {% if section.settings.title != blank %}
+        <h1>{{ section.settings.title }}</h1>
+      {% endif %}
+      {% if section.settings.subtitle != blank %}
+        <p class="rfq-subtitle-{{ section.id }}">{{ section.settings.subtitle }}</p>
+      {% endif %}
+    </div>
+
+    <div class="rfq-container-{{ section.id }}">
+      <div class="rfq-form-{{ section.id }}">
+        {% form 'contact', id: 'CntireRfqPage' %}
+          {% if form.posted_successfully? %}
+            <div class="rfq-success-{{ section.id }}">
+              {{ section.settings.success_message }}
+            </div>
+          {% else %}
+            {% if form.errors %}
+              <div class="rfq-error-{{ section.id }}">
+                ⚠️ Sorry, something went wrong. Please check the highlighted fields and try again.
+              </div>
+            {% endif %}
+
+            <div class="form-row-{{ section.id }}">
+              <div class="form-group-{{ section.id }}">
+                <label>Your Name <span class="required-{{ section.id }}">*</span></label>
+                <input type="text" name="contact[name]" value="{{ form.name }}" placeholder="Enter your full name" required>
+              </div>
+              <div class="form-group-{{ section.id }}">
+                <label>Company Name</label>
+                <input type="text" name="contact[company]" placeholder="Your company name">
+              </div>
+            </div>
+            <div class="form-row-{{ section.id }}">
+              <div class="form-group-{{ section.id }}">
+                <label>Email <span class="required-{{ section.id }}">*</span></label>
+                <input type="email" name="contact[email]" value="{{ form.email }}" placeholder="Enter your email" required>
+              </div>
+              <div class="form-group-{{ section.id }}">
+                <label>Phone Number <span class="required-{{ section.id }}">*</span></label>
+                <input type="tel" name="contact[phone]" value="{{ form.phone }}" placeholder="+1 234 567 8900" required>
+              </div>
+            </div>
+            <div class="form-row-{{ section.id }}">
+              <div class="form-group-{{ section.id }}">
+                <label>Country/Region <span class="required-{{ section.id }}">*</span></label>
+                <select name="contact[country]" required>
+                  <option value="">Select your country</option>
+                  <option value="Nigeria">Nigeria</option>
+                  <option value="South Africa">South Africa</option>
+                  <option value="Kenya">Kenya</option>
+                  <option value="Saudi Arabia">Saudi Arabia</option>
+                  <option value="UAE">UAE</option>
+                  <option value="Qatar">Qatar</option>
+                  <option value="Mexico">Mexico</option>
+                  <option value="Brazil">Brazil</option>
+                  <option value="USA">USA</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+              <div class="form-group-{{ section.id }}">
+                <label>Expected Order Quantity</label>
+                <select name="contact[quantity]">
+                  <option value="">Select quantity</option>
+                  <option value="1-10">1-10 units</option>
+                  <option value="11-50">11-50 units</option>
+                  <option value="51-100">51-100 units</option>
+                  <option value="101-500">101-500 units</option>
+                  <option value="500+">500+ units (Container)</option>
+                </select>
+              </div>
+            </div>
+
+            {% if section.blocks.size > 0 %}
+              <div class="form-group-{{ section.id }}">
+                <label>{{ section.settings.products_label }}</label>
+                <div class="checkbox-group-{{ section.id }}">
+                  {% for block in section.blocks %}
+                    {% if block.type == 'product_option' %}
+                      <label class="checkbox-item-{{ section.id }}" {{ block.shopify_attributes }}>
+                        <input type="checkbox" name="contact[products][]" value="{{ block.settings.label }}"> {{ block.settings.label }}
+                      </label>
+                    {% endif %}
+                  {% endfor %}
+                </div>
+              </div>
+            {% endif %}
+
+            <div class="form-group-{{ section.id }}">
+              <label>Target Delivery Date</label>
+              <input type="date" name="contact[delivery_date]">
+            </div>
+            <div class="form-group-{{ section.id }}">
+              <label>Your Message <span class="required-{{ section.id }}">*</span></label>
+              <textarea name="contact[body]" rows="5" placeholder="Please describe your requirements..." required></textarea>
+            </div>
+            <button type="submit" class="submit-btn-{{ section.id }}">{{ section.settings.submit_text }}</button>
+          {% endif %}
+        {% endform %}
+      </div>
+
+      <div class="rfq-sidebar-{{ section.id }}">
+        {% if section.settings.why_title != blank %}
+          <div>
+            <h3>{{ section.settings.why_title }}</h3>
+            {% if section.settings.why_list != blank %}
+              <ul>
+                {% assign why_lines = section.settings.why_list | split: "\n" %}
+{% for line in why_lines %}
+  {% if line != blank %}
+    <li>✓ {{ line | strip }}</li>
+  {% endif %}
+{% endfor %}
+              </ul>
+            {% endif %}
+          </div>
+        {% endif %}
+        {% if section.settings.contact_title != blank %}
+          <div>
+            <h3>{{ section.settings.contact_title }}</h3>
+            {% if section.settings.contact_email_1 != blank %}<p>📧 {{ section.settings.contact_email_1 }}</p>{% endif %}
+            {% if section.settings.contact_email_2 != blank %}<p>📧 {{ section.settings.contact_email_2 }}</p>{% endif %}
+            {% if section.settings.contact_phone != blank %}<p>📞 {{ section.settings.contact_phone }}</p>{% endif %}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+.rfq-page-{{ section.id }} {
+  margin: 0 auto;
+  padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+.rfq-header-{{ section.id }} {
+  text-align: center;
+  margin-bottom: 50px;
+}
+.section-badge-{{ section.id }} {
+  background: {{ section.settings.accent_color }};
+  color: white;
+  padding: 4px 12px;
+  font-size: 11px;
+  border-radius: 4px;
+  display: inline-block;
+  margin-bottom: 16px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+.rfq-header-{{ section.id }} h1 {
+  font-size: 36px;
+  color: {{ section.settings.heading_color }};
+  margin: 0 0 12px;
+  font-weight: 700;
+}
+.rfq-subtitle-{{ section.id }} {
+  color: {{ section.settings.accent_color }};
+  font-style: italic;
+  font-size: 18px;
+  margin: 0;
+}
+.rfq-container-{{ section.id }} {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 60px;
+}
+.rfq-form-{{ section.id }} {
+  background: white;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+.rfq-success-{{ section.id }} {
+  background: #e8f7ee;
+  border: 1px solid #4caf50;
+  color: #1b5e20;
+  padding: 20px;
+  border-radius: 8px;
+  font-size: 15px;
+  line-height: 1.6;
+}
+.rfq-error-{{ section.id }} {
+  background: #fdecea;
+  border: 1px solid #e53935;
+  color: #b71c1c;
+  padding: 16px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+.form-row-{{ section.id }} {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.form-group-{{ section.id }} {
+  margin-bottom: 24px;
+}
+.form-group-{{ section.id }} label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #333;
+  font-weight: 500;
+}
+.required-{{ section.id }} {
+  color: {{ section.settings.accent_color }};
+}
+.form-group-{{ section.id }} input,
+.form-group-{{ section.id }} select,
+.form-group-{{ section.id }} textarea {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #E5E5E5;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+.form-group-{{ section.id }} input:focus,
+.form-group-{{ section.id }} select:focus,
+.form-group-{{ section.id }} textarea:focus {
+  border-color: {{ section.settings.accent_color }};
+  outline: none;
+}
+.checkbox-group-{{ section.id }} {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+.checkbox-item-{{ section.id }} {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  cursor: pointer;
+}
+.checkbox-item-{{ section.id }} input {
+  width: auto;
+}
+.submit-btn-{{ section.id }} {
+  background: {{ section.settings.accent_color }};
+  color: white;
+  padding: 16px 40px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  width: 100%;
+  transition: background 0.3s;
+}
+.submit-btn-{{ section.id }}:hover {
+  opacity: 0.9;
+}
+.rfq-sidebar-{{ section.id }} > div {
+  background: #F5F5F5;
+  padding: 24px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+.rfq-sidebar-{{ section.id }} h3 {
+  font-size: 16px;
+  color: {{ section.settings.heading_color }};
+  margin: 0 0 16px;
+  font-weight: 700;
+}
+.rfq-sidebar-{{ section.id }} ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.rfq-sidebar-{{ section.id }} li {
+  padding: 8px 0;
+  font-size: 14px;
+  color: #555;
+}
+.rfq-sidebar-{{ section.id }} p {
+  margin: 8px 0;
+  font-size: 14px;
+  color: #555;
+}
+@media (max-width: 900px) {
+  .rfq-container-{{ section.id }} { grid-template-columns: 1fr; }
+  .form-row-{{ section.id }} { grid-template-columns: 1fr; }
+  .checkbox-group-{{ section.id }} { grid-template-columns: 1fr; }
+}
+</style>
+
+{% schema %}
+{
+  "name": "CnTire RFQ Page",
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge text",
+      "default": "★ B2B CORE"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Request for Quote"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subheading",
+      "default": "Enjoy the best offered by us"
+    },
+    {
+      "type": "textarea",
+      "id": "success_message",
+      "label": "Success message",
+      "default": "✅ Thank you for your inquiry! Your quote request has been submitted successfully. Our team will get back to you within 24 hours."
+    },
+    {
+      "type": "text",
+      "id": "products_label",
+      "label": "Products checkbox group label",
+      "default": "Products Interested In"
+    },
+    {
+      "type": "text",
+      "id": "submit_text",
+      "label": "Submit button text",
+      "default": "Submit Your Quote Request"
+    },
+    {
+      "type": "header",
+      "content": "Sidebar - Why request a quote"
+    },
+    {
+      "type": "text",
+      "id": "why_title",
+      "label": "Title",
+      "default": "Why Request a Quote?"
+    },
+    {
+      "type": "textarea",
+      "id": "why_list",
+      "label": "Benefits (one per line)",
+      "default": "Bulk pricing discounts\nOEM/ODM customization options\nContainer shipping rates\nDedicated account manager\nFlexible payment terms"
+    },
+    {
+      "type": "header",
+      "content": "Sidebar - Direct contact"
+    },
+    {
+      "type": "text",
+      "id": "contact_title",
+      "label": "Title",
+      "default": "Contact Us Directly"
+    },
+    {
+      "type": "text",
+      "id": "contact_email_1",
+      "label": "Email 1",
+      "default": "sales@cntire.com"
+    },
+    {
+      "type": "text",
+      "id": "contact_email_2",
+      "label": "Email 2",
+      "default": "rfq@cntire.com"
+    },
+    {
+      "type": "text",
+      "id": "contact_phone",
+      "label": "Phone",
+      "default": "+86 136 8886 2192"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#1A1A2E"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent color",
+      "default": "#F26522"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 60
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product_option",
+      "name": "Product option",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Checkbox label",
+          "default": "New product option"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 16,
+  "presets": [
+    {
+      "name": "CnTire RFQ Page",
+      "blocks": [
+        { "type": "product_option", "settings": { "label": "Self-Sealing Tires" } },
+        { "type": "product_option", "settings": { "label": "Passenger Car Tires" } },
+        { "type": "product_option", "settings": { "label": "Truck Tires" } },
+        { "type": "product_option", "settings": { "label": "Tire Changers" } },
+        { "type": "product_option", "settings": { "label": "Wheel Balancers" } },
+        { "type": "product_option", "settings": { "label": "Vulcanizers" } },
+        { "type": "product_option", "settings": { "label": "Auto Parts" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

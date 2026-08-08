@@ -1,0 +1,319 @@
+{% liquid
+  assign bullet_count = 0
+  assign cta_count = 0
+  assign cat_count = 0
+  for block in section.blocks
+    if block.type == 'bullet'
+      assign bullet_count = bullet_count | plus: 1
+    elsif block.type == 'cta_button'
+      assign cta_count = cta_count | plus: 1
+    elsif block.type == 'category_button'
+      assign cat_count = cat_count | plus: 1
+    endif
+  endfor
+
+  if section.settings.background_image
+    assign bg_url = section.settings.background_image | image_url: width: 1920
+  else
+    assign bg_url = 'ct-cat-6.png' | asset_url
+  endif
+%}
+
+<section
+  class="hero-cn"
+  style="
+    background-image:
+      linear-gradient(135deg,
+        rgba(26,26,46,{{ section.settings.overlay_opacity_1 | divided_by: 100.0 }}) 0%,
+        rgba(26,26,46,{{ section.settings.overlay_opacity_2 | divided_by: 100.0 }}) 50%,
+        rgba(42,42,78,{{ section.settings.overlay_opacity_3 | divided_by: 100.0 }}) 100%
+      ),
+      url('{{ bg_url }}');
+  "
+>
+  <div class="page-width">
+    <div class="hero-cn-inner">
+      <div class="hero-content">
+        {% if section.settings.heading != blank %}
+          <h1 style="color: white;">{{ section.settings.heading }}</h1>
+        {% endif %}
+
+        {% if section.settings.subheading != blank %}
+          <p>{{ section.settings.subheading }}</p>
+        {% endif %}
+
+        {% if bullet_count > 0 %}
+          <ul class="hero-bullets">
+            {% for block in section.blocks %}
+              {% if block.type == 'bullet' %}
+                <li {{ block.shopify_attributes }}>{{ block.settings.text }}</li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        {% endif %}
+
+        {% if cta_count > 0 %}
+          <div class="hero-cta">
+            {% for block in section.blocks %}
+              {% if block.type == 'cta_button' %}
+                <a href="{{ block.settings.link | default: '#' }}"
+                   class="{% if block.settings.style == 'primary' %}btn-primary{% else %}btn-secondary{% endif %}"
+                   {{ block.shopify_attributes }}>
+                  {{ block.settings.label }}
+                </a>
+              {% endif %}
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+
+      {% if cat_count > 0 %}
+        <div class="hero-categories">
+          {% for block in section.blocks %}
+            {% if block.type == 'category_button' %}
+              <a href="{{ block.settings.link | default: '#' }}" class="hero-cat-btn" {{ block.shopify_attributes }}>
+                {% if block.settings.icon != blank %}<span class="hero-cat-icon">{{ block.settings.icon }}</span>{% endif %}
+                {{ block.settings.label }}
+              </a>
+            {% endif %}
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<style>
+.hero-cn {
+  position: relative;
+  color: white;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+.hero-cn .page-width {
+  position: relative;
+  z-index: 1;
+}
+.hero-cn-inner {
+  display: flex;
+  gap: 60px;
+  align-items: center;
+  min-height: 500px;
+  padding: 80px 0;
+}
+.hero-content { flex: 1; }
+.hero-cn h1 {
+  font-size: 42px;
+  margin-bottom: 20px;
+  line-height: 1.2;
+  font-weight: 700;
+}
+.hero-cn h2 {
+  font-size: 20px;
+  font-weight: 400;
+  opacity: 0.9;
+  margin-bottom: 30px;
+}
+.hero-bullets {
+  margin-bottom: 30px;
+  list-style: none;
+  padding: 0;
+}
+.hero-bullets li {
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+.hero-bullets li::before {
+  content: "✓ ";
+  color: #F26522;
+  font-weight: 700;
+}
+.hero-cta {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.btn-primary {
+  background: #F26522;
+  color: white;
+  padding: 14px 32px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s;
+}
+.btn-primary:hover {
+  background: #e55a1b;
+  transform: translateY(-2px);
+}
+.btn-secondary {
+  background: transparent;
+  color: white;
+  padding: 14px 32px;
+  border: 2px solid rgba(255,255,255,0.7);
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s;
+}
+.btn-secondary:hover {
+  border-color: white;
+  background: rgba(255,255,255,0.1);
+}
+.hero-categories {
+  flex: 0 0 330px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.hero-cat-btn {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: white;
+  padding: 16px 12px;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 14px;
+  text-decoration: none;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+.hero-cat-icon { font-size: 16px; line-height: 1; }
+.hero-cat-btn:hover {
+  background: #F26522;
+  border-color: #F26522;
+}
+@media (max-width: 1024px) {
+  .hero-cn-inner { flex-direction: column; padding: 60px 0; }
+  .hero-categories { flex: none; width: 100%; max-width: 400px; }
+  .hero-cn h1 { font-size: 32px; }
+}
+@media (max-width: 600px) {
+  .hero-cn-inner { padding: 40px 0; }
+  .hero-categories { grid-template-columns: 1fr; }
+}
+</style>
+
+{% schema %}
+{
+  "name": "CnTire Hero",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background image"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Professional Tire Equipment & Wholesale Tires Exporter"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "OEM Manufacturer Since 2006 | Trusted by 500+ Distributors Globally"
+    },
+    {
+      "type": "header",
+      "content": "Overlay"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity_1",
+      "label": "Overlay opacity (left)",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 95
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity_2",
+      "label": "Overlay opacity (middle)",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 85
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity_3",
+      "label": "Overlay opacity (right)",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 70
+    }
+  ],
+  "blocks": [
+    {
+      "type": "bullet",
+      "name": "Bullet point",
+      "settings": [
+        { "type": "text", "id": "text", "label": "Text", "default": "ISO 9001 Certified Manufacturing" }
+      ]
+    },
+    {
+      "type": "cta_button",
+      "name": "CTA Button",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Button label", "default": "Explore Products" },
+        { "type": "url", "id": "link", "label": "Button link" },
+        {
+          "type": "select",
+          "id": "style",
+          "label": "Button style",
+          "options": [
+            { "value": "primary", "label": "Primary" },
+            { "value": "secondary", "label": "Secondary" }
+          ],
+          "default": "primary"
+        }
+      ]
+    },
+    {
+      "type": "category_button",
+      "name": "Category Button",
+      "settings": [
+        { "type": "text", "id": "icon", "label": "Icon (emoji or symbol)", "info": "Paste an emoji, e.g. 🛞", "default": "🛞" },
+        { "type": "text", "id": "label", "label": "Label", "default": "New Tires" },
+        { "type": "url", "id": "link", "label": "Link" }
+      ]
+    }
+  ],
+  "max_blocks": 20,
+  "presets": [
+    {
+      "name": "CnTire Hero",
+      "blocks": [
+        { "type": "bullet", "settings": { "text": "ISO 9001 Certified Manufacturing" } },
+        { "type": "bullet", "settings": { "text": "OEM/ODM Custom Branding Available" } },
+        { "type": "bullet", "settings": { "text": "Global Shipping - Sea, Air & Express" } },
+        { "type": "bullet", "settings": { "text": "MOQ 1 Unit for Sample Orders" } },
+        { "type": "cta_button", "settings": { "label": "Explore Products", "link": "/collections/all", "style": "primary" } },
+        { "type": "cta_button", "settings": { "label": "Get Free Quote", "link": "/pages/rfq-center", "style": "secondary" } },
+        { "type": "category_button", "settings": { "icon": "🛞", "label": "New Tires", "link": "/collections/new-tires" } },
+        { "type": "category_button", "settings": { "icon": "🔄", "label": "Used Tires", "link": "/collections/used-tires" } },
+        { "type": "category_button", "settings": { "icon": "⭐", "label": "Self-Sealing", "link": "/collections/self-sealing-tire-machines" } },
+        { "type": "category_button", "settings": { "icon": "🔧", "label": "Tire Equipment", "link": "/collections/tire-service-equipment" } },
+        { "type": "category_button", "settings": { "icon": "🚗", "label": "Auto Parts", "link": "/collections/auto-parts-cj-dropshipping" } },
+        { "type": "category_button", "settings": { "icon": "📦", "label": "Bulk Order", "link": "/pages/wholesale-bulk-order" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

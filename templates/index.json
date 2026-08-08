@@ -1,0 +1,955 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "cn_tire_hero_WGbi8H": {
+      "type": "CnTire-Hero",
+      "blocks": {
+        "bullet_bJxXxE": {
+          "type": "bullet",
+          "settings": {
+            "text": "ISO 9001 Certified Manufacturing"
+          }
+        },
+        "bullet_ph3G4g": {
+          "type": "bullet",
+          "settings": {
+            "text": "OEM/ODM Custom Branding Available"
+          }
+        },
+        "bullet_z9yxQb": {
+          "type": "bullet",
+          "settings": {
+            "text": "Global Shipping - Sea, Air & Express"
+          }
+        },
+        "bullet_Q7JwXh": {
+          "type": "bullet",
+          "settings": {
+            "text": "MOQ 1 Unit for Sample Orders"
+          }
+        },
+        "cta_button_LawwCm": {
+          "type": "cta_button",
+          "settings": {
+            "label": "Explore Products",
+            "link": "shopify://collections/all",
+            "style": "primary"
+          }
+        },
+        "cta_button_JrKi9m": {
+          "type": "cta_button",
+          "settings": {
+            "label": "Get Free Quote",
+            "link": "shopify://pages/rfq-center",
+            "style": "secondary"
+          }
+        },
+        "category_button_yAyfmk": {
+          "type": "category_button",
+          "settings": {
+            "icon": "🛞",
+            "label": "New Tires",
+            "link": "/collections/new-tires"
+          }
+        },
+        "category_button_rhpWjc": {
+          "type": "category_button",
+          "settings": {
+            "icon": "🔄",
+            "label": "Used Tires",
+            "link": "/collections/used-tires"
+          }
+        },
+        "category_button_QCTFRw": {
+          "type": "category_button",
+          "settings": {
+            "icon": "⭐",
+            "label": "Self-Sealing",
+            "link": "/collections/self-sealing-tire-machines"
+          }
+        },
+        "category_button_kQmeff": {
+          "type": "category_button",
+          "settings": {
+            "icon": "🔧",
+            "label": "Tire Equipment",
+            "link": "/collections/tire-service-equipment"
+          }
+        },
+        "category_button_B3XV3F": {
+          "type": "category_button",
+          "settings": {
+            "icon": "🚗",
+            "label": "Auto Parts",
+            "link": "/collections/auto-parts-cj-dropshipping"
+          }
+        },
+        "category_button_CmQkxQ": {
+          "type": "category_button",
+          "settings": {
+            "icon": "📦",
+            "label": "Bulk Order",
+            "link": "/pages/wholesale-bulk-order"
+          }
+        }
+      },
+      "block_order": [
+        "bullet_bJxXxE",
+        "bullet_ph3G4g",
+        "bullet_z9yxQb",
+        "bullet_Q7JwXh",
+        "cta_button_LawwCm",
+        "cta_button_JrKi9m",
+        "category_button_yAyfmk",
+        "category_button_rhpWjc",
+        "category_button_QCTFRw",
+        "category_button_kQmeff",
+        "category_button_B3XV3F",
+        "category_button_CmQkxQ"
+      ],
+      "name": "CnTire Hero",
+      "settings": {
+        "background_image": "shopify://shop_images/ct-cat-6.webp",
+        "heading": "Professional Tire Equipment & Wholesale Tires Exporter",
+        "subheading": "OEM Manufacturer Since 2006 | Trusted by 500+ Distributors Globally",
+        "overlay_opacity_1": 95,
+        "overlay_opacity_2": 85,
+        "overlay_opacity_3": 70
+      }
+    },
+    "cntire_search_6Mz4e8": {
+      "type": "cntire-search",
+      "name": "CnTire Search",
+      "settings": {}
+    },
+    "cntire_categories_TzXUM8": {
+      "type": "cntire-categories",
+      "blocks": {
+        "category_pC7NFt": {
+          "type": "category",
+          "settings": {
+            "collection": "new-arrival-products",
+            "link": "",
+            "name": "New Arrival Products",
+            "meta": "Latest Arrivals | Limited Stock",
+            "icon": "🔥"
+          }
+        },
+        "category_jzVPBc": {
+          "type": "category",
+          "settings": {
+            "collection": "passenger-car-tires",
+            "link": "",
+            "name": "Self-Sealing Tire Machines",
+            "meta": "Professional Grade | OEM Available",
+            "icon": "🚗"
+          }
+        },
+        "category_i3gAfm": {
+          "type": "category",
+          "settings": {
+            "collection": "self-sealing-tires",
+            "link": "",
+            "name": "Tire Repair Equipment",
+            "meta": "Vulcanizers & Testers | Hot Sale",
+            "icon": "🔧"
+          }
+        },
+        "category_TPyHA9": {
+          "type": "category",
+          "settings": {
+            "collection": "auto-parts-and-accessories",
+            "link": "",
+            "name": "Tire Service Equipment",
+            "meta": "Changers | Balancers | Vulcanizers",
+            "icon": "⚙️"
+          }
+        },
+        "category_dmk3Hb": {
+          "type": "category",
+          "settings": {
+            "collection": "self-sealing-tire-machines",
+            "link": "",
+            "name": "Self-Sealing Tires",
+            "meta": "Commercial Grade | Bulk Ready",
+            "icon": "🏭"
+          }
+        },
+        "category_k83zhF": {
+          "type": "category",
+          "settings": {
+            "collection": "tire-service-equipment",
+            "link": "",
+            "name": "Auto Parts & Accessories",
+            "meta": "1000+ SKUs | Fast Shipping",
+            "icon": "🛠️"
+          }
+        },
+        "category_jDr9wm": {
+          "type": "category",
+          "settings": {
+            "collection": "tire-repair-equipment",
+            "link": "",
+            "name": "Passenger Car Tires",
+            "meta": "PCR | All Season | Performance",
+            "icon": "🔩"
+          }
+        },
+        "category_xzkMRe": {
+          "type": "category",
+          "settings": {
+            "collection": "wholesale-bulk-order",
+            "link": "",
+            "name": "",
+            "meta": "Tire Repair Equipment Wholesale Professional tire service equipment for tire shops, ga...",
+            "icon": "📦"
+          }
+        }
+      },
+      "block_order": [
+        "category_pC7NFt",
+        "category_jzVPBc",
+        "category_i3gAfm",
+        "category_TPyHA9",
+        "category_dmk3Hb",
+        "category_k83zhF",
+        "category_jDr9wm",
+        "category_xzkMRe"
+      ],
+      "custom_css": [
+        ".section-header {margin-bottom: 40px;}"
+      ],
+      "name": "CnTire Categories",
+      "settings": {
+        "badge_text": "★ CATEGORY FIRST STRATEGY",
+        "heading": "Shop by Category",
+        "subheading": "Complete tire service solutions for every need"
+      }
+    },
+    "value_props_section_g7zFxf": {
+      "type": "value-props-section",
+      "blocks": {
+        "value_box_NpBfUn": {
+          "type": "value_box",
+          "settings": {
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" width=\"256\" height=\"256\" viewbox=\"0 0 256 256\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xml:space=\"preserve\">\n<g style=\"stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;\" transform=\"translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)\">\n\t<path d=\"M 84.114 85.253 V 18.509 H 59.038 V 1.885 H 30.962 v 16.625 H 5.886 v 66.744 H 0 v 3 h 38.314 h 13.371 H 90 v -3 H 84.114 z M 81.114 21.509 v 63.744 H 59.038 V 21.509 H 81.114 z M 8.886 21.509 h 22.076 v 63.744 H 8.886 V 21.509 z M 41.314 85.253 V 65.981 c 0 -2.032 1.653 -3.686 3.686 -3.686 s 3.686 1.653 3.686 3.686 v 19.271 H 41.314 z M 45 59.296 c -3.687 0 -6.686 2.999 -6.686 6.686 v 19.271 h -4.353 V 18.509 V 4.885 h 22.076 v 13.625 v 66.744 h -4.353 V 65.981 C 51.686 62.295 48.687 59.296 45 59.296 z\" style=\"stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(255,255,255); fill-rule: nonzero; opacity: 1;\" transform=\" matrix(1 0 0 1 0 0) \" stroke-linecap=\"round\"></path>\n\t<path d=\"M 51.686 8.138 H 38.314 v 13.372 h 13.371 V 8.138 z M 48.686 18.509 h -7.371 v -7.372 h 7.371 V 18.509 z\" style=\"stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(255,255,255); fill-rule: nonzero; opacity: 1;\" transform=\" matrix(1 0 0 1 0 0) \" stroke-linecap=\"round\"></path>\n\t<path d=\"M 51.686 25.19 H 38.314 v 13.372 h 13.371 V 25.19 z M 48.686 35.562 h -7.371 V 28.19 h 7.371 V 35.562 z\" style=\"stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(255,255,255); fill-rule: nonzero; opacity: 1;\" transform=\" matrix(1 0 0 1 0 0) \" stroke-linecap=\"round\"></path>\n\t<path d=\"M 51.686 42.243 H 38.314 v 13.371 h 13.371 V 42.243 z M 48.686 52.614 h -7.371 v -7.371 h 7.371 V 52.614 z\" style=\"stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(255,255,255); fill-rule: nonzero; opacity: 1;\" transform=\" matrix(1 0 0 1 0 0) \" stroke-linecap=\"round\"></path>\n\t<path d=\"M 76.762 25.19 H 63.391 v 13.372 h 13.371 V 25.19 z M 73.762 35.562 h -7.371 V 28.19 h 7.371 V 35.562 z\" style=\"stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(255,255,255); fill-rule: nonzero; opacity: 1;\" transform=\" matrix(1 0 0 1 0 0) \" stroke-linecap=\"round\"></path>\n\t<path d=\"M 76.762 42.243 H 63.391 v 13.371 h 13.371 V 42.243 z M 73.762 52.614 h -7.371 v -7.371 h 7.371 V 52.614 z\" style=\"stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(255,255,255); fill-rule: nonzero; opacity: 1;\" transform=\" matrix(1 0 0 1 0 0) \" stroke-linecap=\"round\"></path>\n\t<path d=\"M 76.762 59.296 H 63.391 v 13.371 h 13.371 V 59.296 z M 73.762 69.667 h -7.371 v -7.371 h 7.371 V 69.667 z\" style=\"stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(255,255,255); fill-rule: nonzero; opacity: 1;\" transform=\" matrix(1 0 0 1 0 0) \" stroke-linecap=\"round\"></path>\n\t<path d=\"M 13.238 25.19 v 13.372 H 26.61 V 25.19 H 13.238 z M 23.61 35.562 h -7.372 V 28.19 h 7.372 V 35.562 z\" style=\"stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(255,255,255); fill-rule: nonzero; opacity: 1;\" transform=\" matrix(1 0 0 1 0 0) \" stroke-linecap=\"round\"></path>\n\t<path d=\"M 13.238 55.614 H 26.61 V 42.243 H 13.238 V 55.614 z M 16.238 45.243 h 7.372 v 7.371 h -7.372 V 45.243 z\" style=\"stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(255,255,255); fill-rule: nonzero; opacity: 1;\" transform=\" matrix(1 0 0 1 0 0) \" stroke-linecap=\"round\"></path>\n\t<path d=\"M 13.238 72.667 H 26.61 V 59.296 H 13.238 V 72.667 z M 16.238 62.296 h 7.372 v 7.371 h -7.372 V 62.296 z\" style=\"stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(255,255,255); fill-rule: nonzero; opacity: 1;\" transform=\" matrix(1 0 0 1 0 0) \" stroke-linecap=\"round\"></path>\n</g>\n</svg>",
+            "title": "For B2B Distributors & Wholesalers",
+            "bg_color": "#1a1a2e",
+            "item_icon_1": "<svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" width=\"256\" height=\"256\" viewbox=\"0 0 256 256\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xml:space=\"preserve\">\n<g style=\"stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;\" transform=\"translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)\">\n\t<rect x=\"73.4\" y=\"26.93\" rx=\"0\" ry=\"0\" width=\"9.02\" height=\"6.03\" style=\"stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(249,208,62); fill-rule: nonzero; opacity: 1;\" transform=\" matrix(-1 -1.224647e-16 1.224647e-16 -1 155.8182 59.892) \"></rect>\n\t<rect x=\"48.37\" y=\"26.93\" rx=\"0\" ry=\"0\" width=\"9.02\" height=\"6.03\" style=\"stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(249,208,62); fill-rule: nonzero; opacity: 1;\" transform=\" matrix(-1 -1.224647e-16 1.224647e-16 -1 105.7533 59.892) \"></rect>\n\t<polygon points=\"71.87,59.86 73.4,32.96 82.42,32.96 84.1,62.04 \" style=\"stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(210,51,85); fill-rule: nonzero; opacity: 1;\" transform=\"  matrix(1 0 0 1 0 0) \"></polygon>\n\t<polygon points=\"47.13,55.45 48.37,32.96 57.39,32.96 58.76,57.52 \" style=\"stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(210,51,85); fill-rule: nonzero; opacity: 1;\" transform=\"  matrix(1 0 0 1 0 0) \"></polygon>\n\t<rect x=\"0.41\" y=\"40.81\" rx=\"0\" ry=\"0\" width=\"36.36\" height=\"48.19\" style=\"stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(210,51,85); fill-rule: nonzero; opacity: 1;\" transform=\" matrix(-1 -1.224647e-16 1.224647e-16 -1 37.1796 129.8141) \"></rect>\n\t<polygon points=\"89.59,63.02 89.59,89 36.77,89 36.77,53.61 \" style=\"stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(244,64,102); fill-rule: nonzero; opacity: 1;\" transform=\"  matrix(1 0 0 1 0 0) \"></polygon>\n\t<path d=\"M 56.547 5.699 h -8.216 c 0.008 -0.111 0.033 -0.217 0.033 -0.33 C 48.365 2.956 46.408 1 43.996 1 c -2.413 0 -4.369 1.956 -4.369 4.369 c 0 0.113 0.025 0.219 0.033 0.33 h -1.434 c -2.37 0 -4.291 1.921 -4.291 4.291 c 0 2.37 1.921 4.291 4.291 4.291 h 10.139 v 1.856 c 0 2.492 2.02 4.512 4.512 4.512 c 2.492 0 4.512 -2.02 4.512 -4.512 v -1.941 c 1.966 -0.391 3.449 -2.124 3.449 -4.206 C 60.838 7.62 58.917 5.699 56.547 5.699 z\" style=\"stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(191,209,215); fill-rule: nonzero; opacity: 1;\" transform=\" matrix(1 0 0 1 0 0) \" stroke-linecap=\"round\"></path>\n\t<path d=\"M 83.184 7.395 c 0.037 -0.232 0.071 -0.466 0.071 -0.708 c 0 -2.492 -2.02 -4.512 -4.512 -4.512 s -4.512 2.02 -4.512 4.512 c 0 0.174 0.032 0.34 0.051 0.509 h -3.971 c -2.37 0 -4.291 1.921 -4.291 4.291 c 0 2.37 1.921 4.291 4.291 4.291 h 3.463 v 1.856 c 0 2.492 2.02 4.512 4.512 4.512 c 2.492 0 4.512 -2.02 4.512 -4.512 v -1.941 c 1.966 -0.391 3.449 -2.124 3.449 -4.206 C 86.248 9.545 84.952 7.925 83.184 7.395 z\" style=\"stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(191,209,215); fill-rule: nonzero; opacity: 1;\" transform=\" matrix(1 0 0 1 0 0) \" stroke-linecap=\"round\"></path>\n\t<rect x=\"49.43\" y=\"71.26\" rx=\"0\" ry=\"0\" width=\"28.48\" height=\"17.74\" style=\"stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(249,208,62); fill-rule: nonzero; opacity: 1;\" transform=\" matrix(1 0 0 1 0 0) \"></rect>\n\t<polygon points=\"36.77,33.02 24.04,36.09 24.04,40.81 36.77,40.81 \" style=\"stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(249,208,62); fill-rule: nonzero; opacity: 1;\" transform=\"  matrix(1 0 0 1 0 0) \"></polygon>\n\t<rect x=\"8.45\" y=\"50.11\" rx=\"0\" ry=\"0\" width=\"6.97\" height=\"6.97\" style=\"stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(191,209,215); fill-rule: nonzero; opacity: 1;\" transform=\" matrix(1 0 0 1 0 0) \"></rect>\n\t<rect x=\"21.76\" y=\"50.11\" rx=\"0\" ry=\"0\" width=\"6.97\" height=\"6.97\" style=\"stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(191,209,215); fill-rule: nonzero; opacity: 1;\" transform=\" matrix(1 0 0 1 0 0) \"></rect>\n\t<rect x=\"8.45\" y=\"63.41\" rx=\"0\" ry=\"0\" width=\"6.97\" height=\"6.97\" style=\"stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(191,209,215); fill-rule: nonzero; opacity: 1;\" transform=\" matrix(1 0 0 1 0 0) \"></rect>\n\t<rect x=\"21.76\" y=\"63.41\" rx=\"0\" ry=\"0\" width=\"6.97\" height=\"6.97\" style=\"stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(191,209,215); fill-rule: nonzero; opacity: 1;\" transform=\" matrix(1 0 0 1 0 0) \"></rect>\n\t<rect x=\"13.64\" y=\"76.5\" rx=\"0\" ry=\"0\" width=\"9.9\" height=\"12.5\" style=\"stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(191,209,215); fill-rule: nonzero; opacity: 1;\" transform=\" matrix(1 0 0 1 0 0) \"></rect>\n\t<path d=\"M 82.421 33.962 h -9.023 c -0.553 0 -1 -0.448 -1 -1 V 26.93 c 0 -0.552 0.447 -1 1 -1 h 9.023 c 0.553 0 1 0.448 1 1 v 6.032 C 83.421 33.514 82.974 33.962 82.421 33.962 z M 74.397 31.962 h 7.023 V 27.93 h -7.023 V 31.962 z\" style=\"stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;\" transform=\" matrix(1 0 0 1 0 0) \" stroke-linecap=\"round\"></path>\n\t<path d=\"M 57.389 33.962 h -9.024 c -0.553 0 -1 -0.448 -1 -1 V 26.93 c 0 -0.552 0.447 -1 1 -1 h 9.024 c 0.553 0 1 0.448 1 1 v 6.032 C 58.389 33.514 57.941 33.962 57.389 33.962 z M 49.364 31.962 h 7.024 V 27.93 h -7.024 V 31.962 z\" style=\"stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;\" transform=\" matrix(1 0 0 1 0 0) \" stroke-linecap=\"round\"></path>\n\t<path d=\"M 84.101 63.039 c -0.059 0 -0.117 -0.005 -0.176 -0.016 l -12.234 -2.18 c -0.498 -0.089 -0.852 -0.536 -0.822 -1.041 l 1.531 -26.897 c 0.03 -0.53 0.468 -0.943 0.998 -0.943 h 9.023 c 0.53 0 0.968 0.413 0.998 0.942 l 1.68 29.077 c 0.018 0.306 -0.105 0.603 -0.334 0.806 C 84.58 62.95 84.344 63.039 84.101 63.039 z M 72.915 59.03 l 10.114 1.802 l -1.553 -26.87 h -7.135 L 72.915 59.03 z\" style=\"stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;\" transform=\" matrix(1 0 0 1 0 0) \" stroke-linecap=\"round\"></path>\n\t<path d=\"M 58.761 58.524 c -0.059 0 -0.117 -0.005 -0.176 -0.016 l -11.627 -2.07 c -0.497 -0.089 -0.851 -0.534 -0.822 -1.039 l 1.23 -22.492 c 0.028 -0.53 0.467 -0.945 0.998 -0.945 h 9.024 c 0.53 0 0.969 0.415 0.998 0.944 l 1.372 24.563 c 0.018 0.305 -0.106 0.602 -0.335 0.804 C 59.239 58.437 59.003 58.524 58.761 58.524 z M 48.181 54.625 l 9.511 1.693 l -1.248 -22.356 h -7.132 L 48.181 54.625 z\" style=\"stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;\" transform=\" matrix(1 0 0 1 0 0) \" stroke-linecap=\"round\"></path>\n\t<path d=\"M 36.771 90 H 0.409 c -0.552 0 -1 -0.447 -1 -1 V 40.814 c 0 -0.552 0.448 -1 1 -1 h 36.361 c 0.552 0 1 0.448 1 1 V 89 C 37.771 89.553 37.323 90 36.771 90 z M 1.409 88 h 34.361 V 41.814 H 1.409 V 88 z\" style=\"stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;\" transform=\" matrix(1 0 0 1 0 0) \" stroke-linecap=\"round\"></path>\n\t<path d=\"M 89.591 90 h -52.82 c -0.552 0 -1 -0.447 -1 -1 V 53.607 c 0 -0.296 0.131 -0.576 0.358 -0.767 s 0.53 -0.271 0.817 -0.218 l 52.821 9.41 c 0.477 0.085 0.824 0.5 0.824 0.984 V 89 C 90.591 89.553 90.144 90 89.591 90 z M 37.771 88 h 50.82 V 63.855 l -50.82 -9.054 V 88 z\" style=\"stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;\" transform=\" matrix(1 0 0 1 0 0) \" stroke-linecap=\"round\"></path>\n\t<path d=\"M 52.877 21.648 c -3.04 0 -5.513 -2.473 -5.513 -5.512 V 15.28 h -9.138 c -2.917 0 -5.291 -2.374 -5.291 -5.291 s 2.374 -5.291 5.291 -5.291 h 0.442 C 38.999 2.054 41.262 0 43.996 0 s 4.997 2.054 5.327 4.699 h 7.225 c 2.917 0 5.291 2.374 5.291 5.291 c 0 2.232 -1.409 4.201 -3.449 4.958 v 1.188 C 58.389 19.176 55.916 21.648 52.877 21.648 z M 38.226 6.699 c -1.814 0 -3.291 1.476 -3.291 3.291 s 1.476 3.291 3.291 3.291 h 10.138 c 0.553 0 1 0.448 1 1 v 1.856 c 0 1.937 1.576 3.512 3.513 3.512 s 3.512 -1.576 3.512 -3.512 v -1.941 c 0 -0.477 0.337 -0.888 0.805 -0.981 c 1.532 -0.305 2.645 -1.661 2.645 -3.225 c 0 -1.814 -1.477 -3.291 -3.291 -3.291 h -8.216 c -0.279 0 -0.545 -0.117 -0.734 -0.321 c -0.189 -0.205 -0.284 -0.479 -0.263 -0.758 c 0.005 -0.062 0.013 -0.124 0.021 -0.185 C 47.364 3.511 45.853 2 43.996 2 c -1.858 0 -3.369 1.511 -3.369 3.369 c 0.018 0.125 0.025 0.188 0.031 0.251 c 0.022 0.278 -0.073 0.553 -0.263 0.758 c -0.189 0.205 -0.456 0.321 -0.734 0.321 H 38.226 z\" style=\"stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;\" transform=\" matrix(1 0 0 1 0 0) \" stroke-linecap=\"round\"></path>\n\t<path d=\"M 78.287 23.145 c -3.039 0 -5.512 -2.473 -5.512 -5.512 v -0.856 h -2.464 c -2.917 0 -5.29 -2.374 -5.29 -5.291 s 2.373 -5.291 5.29 -5.291 h 2.941 c 0.249 -2.81 2.616 -5.021 5.49 -5.021 c 3.04 0 5.513 2.473 5.513 5.512 c 0 0.018 0 0.035 0 0.053 c 1.818 0.869 2.992 2.687 2.992 4.747 c 0 2.232 -1.409 4.201 -3.449 4.958 v 1.188 C 83.799 20.672 81.326 23.145 78.287 23.145 z M 70.312 8.195 c -1.814 0 -3.29 1.476 -3.29 3.291 s 1.476 3.291 3.29 3.291 h 3.464 c 0.553 0 1 0.448 1 1 v 1.856 c 0 1.937 1.575 3.512 3.512 3.512 s 3.512 -1.576 3.512 -3.512 v -1.941 c 0 -0.477 0.337 -0.888 0.805 -0.981 c 1.532 -0.305 2.645 -1.661 2.645 -3.225 c 0 -1.453 -0.944 -2.711 -2.351 -3.133 c -0.479 -0.144 -0.778 -0.618 -0.701 -1.112 c 0.028 -0.182 0.06 -0.364 0.06 -0.554 c 0 -1.937 -1.576 -3.512 -3.513 -3.512 s -3.512 1.576 -3.512 3.512 c 0 0.078 0.014 0.153 0.023 0.229 l 0.021 0.165 c 0.033 0.284 -0.057 0.567 -0.247 0.78 c -0.189 0.213 -0.461 0.334 -0.746 0.334 H 70.312 z\" style=\"stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;\" transform=\" matrix(1 0 0 1 0 0) \" stroke-linecap=\"round\"></path>\n\t<path d=\"M 77.909 90 H 49.434 c -0.553 0 -1 -0.447 -1 -1 V 71.26 c 0 -0.553 0.447 -1 1 -1 h 28.476 c 0.553 0 1 0.447 1 1 V 89 C 78.909 89.553 78.462 90 77.909 90 z M 50.434 88 h 26.476 V 72.26 H 50.434 V 88 z\" style=\"stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;\" transform=\" matrix(1 0 0 1 0 0) \" stroke-linecap=\"round\"></path>\n\t<path d=\"M 77.909 78.399 H 49.434 c -0.553 0 -1 -0.447 -1 -1 s 0.447 -1 1 -1 h 28.476 c 0.553 0 1 0.447 1 1 S 78.462 78.399 77.909 78.399 z\" style=\"stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;\" transform=\" matrix(1 0 0 1 0 0) \" stroke-linecap=\"round\"></path>\n\t<path d=\"M 77.909 84.538 H 49.434 c -0.553 0 -1 -0.447 -1 -1 s 0.447 -1 1 -1 h 28.476 c 0.553 0 1 0.447 1 1 S 78.462 84.538 77.909 84.538 z\" style=\"stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;\" transform=\" matrix(1 0 0 1 0 0) \" stroke-linecap=\"round\"></path>\n\t<path d=\"M 36.771 41.814 H 24.038 c -0.552 0 -1 -0.448 -1 -1 v -4.729 c 0 -0.462 0.316 -0.864 0.766 -0.972 l 12.732 -3.07 c 0.299 -0.071 0.612 -0.003 0.853 0.187 s 0.381 0.479 0.381 0.786 v 7.798 C 37.771 41.366 37.323 41.814 36.771 41.814 z M 25.038 39.814 h 10.732 v -5.529 l -10.732 2.588 V 39.814 z\" style=\"stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;\" transform=\" matrix(1 0 0 1 0 0) \" stroke-linecap=\"round\"></path>\n\t<path d=\"M 15.423 58.081 h -6.97 c -0.552 0 -1 -0.447 -1 -1 v -6.97 c 0 -0.553 0.448 -1 1 -1 h 6.97 c 0.552 0 1 0.447 1 1 v 6.97 C 16.423 57.634 15.976 58.081 15.423 58.081 z M 9.454 56.081 h 4.97 v -4.97 h -4.97 V 56.081 z\" style=\"stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;\" transform=\" matrix(1 0 0 1 0 0) \" stroke-linecap=\"round\"></path>\n\t<path d=\"M 28.726 58.081 h -6.969 c -0.552 0 -1 -0.447 -1 -1 v -6.97 c 0 -0.553 0.448 -1 1 -1 h 6.969 c 0.552 0 1 0.447 1 1 v 6.97 C 29.726 57.634 29.278 58.081 28.726 58.081 z M 22.756 56.081 h 4.969 v -4.97 h -4.969 V 56.081 z\" style=\"stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;\" transform=\" matrix(1 0 0 1 0 0) \" stroke-linecap=\"round\"></path>\n\t<path d=\"M 15.423 71.384 h -6.97 c -0.552 0 -1 -0.447 -1 -1 v -6.97 c 0 -0.553 0.448 -1 1 -1 h 6.97 c 0.552 0 1 0.447 1 1 v 6.97 C 16.423 70.937 15.976 71.384 15.423 71.384 z M 9.454 69.384 h 4.97 v -4.97 h -4.97 V 69.384 z\" style=\"stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;\" transform=\" matrix(1 0 0 1 0 0) \" stroke-linecap=\"round\"></path>\n\t<path d=\"M 28.726 71.384 h -6.969 c -0.552 0 -1 -0.447 -1 -1 v -6.97 c 0 -0.553 0.448 -1 1 -1 h 6.969 c 0.552 0 1 0.447 1 1 v 6.97 C 29.726 70.937 29.278 71.384 28.726 71.384 z M 22.756 69.384 h 4.969 v -4.97 h -4.969 V 69.384 z\" style=\"stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;\" transform=\" matrix(1 0 0 1 0 0) \" stroke-linecap=\"round\"></path>\n\t<path d=\"M 23.542 90 h -9.904 c -0.552 0 -1 -0.447 -1 -1 V 76.501 c 0 -0.553 0.448 -1 1 -1 h 9.904 c 0.552 0 1 0.447 1 1 V 89 C 24.542 89.553 24.094 90 23.542 90 z M 14.638 88 h 7.904 V 77.501 h -7.904 V 88 z\" style=\"stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;\" transform=\" matrix(1 0 0 1 0 0) \" stroke-linecap=\"round\"></path>\n</g>\n</svg>",
+            "item_title_1": "OEM/ODM Available",
+            "item_text_1": "Custom branding, specifications, and packaging. MOQ 1 unit for samples.",
+            "item_icon_2": "<svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" width=\"256\" height=\"256\" viewbox=\"0 0 256 256\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xml:space=\"preserve\">\n<g style=\"stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;\" transform=\"translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)\">\n\t<path d=\"M 68.023 74.223 c -7.494 0 -15.448 -1.598 -23.815 -4.797 c -13.639 -5.807 -27.421 -5.801 -42.182 -0.005 c -0.765 0.297 -1.624 -0.076 -1.923 -0.839 c -0.299 -0.762 0.076 -1.624 0.839 -1.923 c 15.523 -6.094 30.038 -6.089 44.377 0.016 c 15.927 6.087 30.257 6.106 42.54 0.035 c 0.733 -0.363 1.624 -0.062 1.988 0.672 c 0.363 0.735 0.062 1.625 -0.672 1.988 C 82.628 72.606 75.559 74.223 68.023 74.223 z\" style=\"stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(255,255,255); fill-rule: nonzero; opacity: 1;\" transform=\" matrix(1 0 0 1 0 0) \" stroke-linecap=\"round\"></path>\n\t<path d=\"M 87.858 56.82 c -2.818 1.393 -5.749 2.45 -8.777 3.202 l 10.702 -17.596 c 0.279 -0.458 0.289 -1.031 0.026 -1.498 c -0.263 -0.467 -0.757 -0.756 -1.293 -0.756 H 77.88 v -3.929 v -9.491 V 17.26 c 0 -0.819 -0.664 -1.484 -1.483 -1.484 H 54.034 h -22.36 c -0.819 0 -1.484 0.664 -1.484 1.484 v 9.491 v 9.491 v 8.008 h -2.498 l -1.392 -2.93 V 22.702 c 0 -0.819 -0.664 -1.483 -1.484 -1.483 H 10.655 c -0.688 0 -1.286 0.473 -1.444 1.143 l -4.203 17.81 H 1.634 c -0.408 0 -0.798 0.168 -1.079 0.465 c -0.28 0.297 -0.425 0.696 -0.402 1.103 c 0.372 6.477 1.42 11.135 3.187 14.143 c -0.797 0.282 -1.595 0.571 -2.398 0.886 c -0.763 0.299 -1.138 1.161 -0.839 1.923 c 0.299 0.763 1.159 1.136 1.923 0.839 c 14.761 -5.797 28.543 -5.802 42.182 0.005 c 8.367 3.199 16.321 4.797 23.815 4.797 c 2.725 0 5.387 -0.219 7.987 -0.642 c 0.001 0 0.003 0.001 0.004 0.001 c 0.145 0 0.288 -0.027 0.426 -0.069 c 4.435 -0.763 8.684 -2.142 12.733 -4.143 c 0.734 -0.363 1.035 -1.253 0.672 -1.988 C 89.482 56.757 88.591 56.457 87.858 56.82 z M 73.126 40.171 c -0.477 0 -0.925 0.229 -1.203 0.616 l -2.495 3.462 h -0.925 H 55.518 v -6.524 h 19.395 v 2.445 H 73.126 z M 33.158 28.235 h 19.393 v 6.524 H 33.158 V 28.235 z M 74.913 34.759 H 55.518 v -6.524 h 19.395 V 34.759 z M 74.913 25.268 H 55.518 v -6.524 h 19.395 V 25.268 z M 33.158 18.744 h 19.393 v 6.524 H 33.158 V 18.744 z M 33.158 37.726 h 19.393 v 6.524 H 33.158 V 37.726 z M 11.829 24.185 h 11.505 v 15.986 H 8.057 L 11.829 24.185 z M 45.319 56.785 c -12.691 -5.404 -25.523 -6.019 -39.067 -1.866 c -1.568 -2.245 -2.588 -6.187 -3.031 -11.781 H 23.88 l 1.535 3.232 c 0.246 0.518 0.767 0.847 1.34 0.847 h 4.919 h 22.36 h 14.468 h 1.685 c 0.477 0 0.925 -0.229 1.203 -0.616 l 2.495 -3.462 h 11.992 L 75.127 60.816 C 66.002 62.213 56.023 60.876 45.319 56.785 z\" style=\"stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(255,255,255); fill-rule: nonzero; opacity: 1;\" transform=\" matrix(1 0 0 1 0 0) \" stroke-linecap=\"round\"></path>\n\t<path d=\"M 20.211 29.738 H 15.85 c -0.819 0 -1.483 -0.664 -1.483 -1.484 c 0 -0.819 0.664 -1.483 1.483 -1.483 h 4.361 c 0.819 0 1.483 0.664 1.483 1.483 C 21.694 29.074 21.03 29.738 20.211 29.738 z\" style=\"stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(255,255,255); fill-rule: nonzero; opacity: 1;\" transform=\" matrix(1 0 0 1 0 0) \" stroke-linecap=\"round\"></path>\n\t<path d=\"M 70.188 53.183 h -3.371 c -0.819 0 -1.483 -0.664 -1.483 -1.484 s 0.664 -1.484 1.483 -1.484 h 3.371 c 0.819 0 1.484 0.664 1.484 1.484 S 71.007 53.183 70.188 53.183 z\" style=\"stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(255,255,255); fill-rule: nonzero; opacity: 1;\" transform=\" matrix(1 0 0 1 0 0) \" stroke-linecap=\"round\"></path>\n\t<path d=\"M 60.298 53.183 h -3.371 c -0.819 0 -1.484 -0.664 -1.484 -1.484 s 0.664 -1.484 1.484 -1.484 h 3.371 c 0.819 0 1.484 0.664 1.484 1.484 S 61.117 53.183 60.298 53.183 z\" style=\"stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(255,255,255); fill-rule: nonzero; opacity: 1;\" transform=\" matrix(1 0 0 1 0 0) \" stroke-linecap=\"round\"></path>\n\t<path d=\"M 50.408 53.183 h -3.371 c -0.819 0 -1.484 -0.664 -1.484 -1.484 s 0.664 -1.484 1.484 -1.484 h 3.371 c 0.819 0 1.484 0.664 1.484 1.484 S 51.227 53.183 50.408 53.183 z\" style=\"stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(255,255,255); fill-rule: nonzero; opacity: 1;\" transform=\" matrix(1 0 0 1 0 0) \" stroke-linecap=\"round\"></path>\n</g>\n</svg>",
+            "item_title_2": "Container Shipping",
+            "item_text_2": "20FT/40HQ consolidation, LCL & FCL options. Freight forwarding support.",
+            "item_icon_3": "💰",
+            "item_title_3": "Flexible Payment",
+            "item_text_3": "T/T, L/C, PayPal, Trade Assurance. Net-30 for verified buyers.",
+            "item_icon_4": "📦",
+            "item_title_4": "Sample Order OK",
+            "item_text_4": "Sample fees deductible from bulk orders. Fast 7-day delivery."
+          }
+        },
+        "value_box_jwnGkC": {
+          "type": "value_box",
+          "settings": {
+            "icon": "🛒",
+            "title": "For Retail & Individual Buyers",
+            "bg_color": "#f26522",
+            "item_icon_1": "🔧",
+            "item_title_1": "Professional Quality",
+            "item_text_1": "Factory-direct pricing, no middlemen. ISO certified manufacturing.",
+            "item_icon_2": "🚚",
+            "item_title_2": "Fast Delivery",
+            "item_text_2": "7-15 days global shipping. Real-time tracking included.",
+            "item_icon_3": "💳",
+            "item_title_3": "Secure Payment",
+            "item_text_3": "Visa, Mastercard, PayPal, bank transfer. 256-bit SSL encryption.",
+            "item_icon_4": "🔄",
+            "item_title_4": "30-Day Returns",
+            "item_text_4": "No questions asked returns. Full refund within 30 days."
+          }
+        }
+      },
+      "block_order": [
+        "value_box_NpBfUn",
+        "value_box_jwnGkC"
+      ],
+      "name": "CnTire Value Props",
+      "settings": {
+        "padding_top": 30,
+        "padding_bottom": 30
+      }
+    },
+    "tech_section_rNcyt8": {
+      "type": "tech-section",
+      "blocks": {
+        "step_ycTf9t": {
+          "type": "step",
+          "settings": {
+            "title": "Puncture Occurs",
+            "text": "Nail, screw, or sharp object penetrates the tire"
+          }
+        },
+        "step_6DH6ag": {
+          "type": "step",
+          "settings": {
+            "title": "Sealant Activates",
+            "text": "Proprietary compound coats and seals the puncture instantly"
+          }
+        },
+        "step_Qx8WhQ": {
+          "type": "step",
+          "settings": {
+            "title": "Keep Driving",
+            "text": "Tire stays inflated. Drive safely to destination."
+          }
+        }
+      },
+      "block_order": [
+        "step_ycTf9t",
+        "step_6DH6ag",
+        "step_Qx8WhQ"
+      ],
+      "name": "CnTire Self-Sealing Tech",
+      "settings": {
+        "badge_text": "⭐ BRAND DIFFERENTIATOR",
+        "heading": "Self-Sealing Tire Technology",
+        "subheading": "Revolutionary puncture-proof tires for harsh road conditions",
+        "video_image": "shopify://shop_images/ct-cat-6_30f76e43-2595-4bdd-9aa7-0978ff914238.png",
+        "steps_heading": "How It Works",
+        "btn1_text": "View Products",
+        "btn1_link": "shopify://collections/all",
+        "btn2_text": "Learn More",
+        "btn2_link": "shopify://pages/suppliers",
+        "bg_color": "#ffffff",
+        "accent_color": "#f26522",
+        "dark_color": "#1a1a2e",
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
+    },
+    "cn_tire_market_gqTXCW": {
+      "type": "CnTire_market",
+      "blocks": {
+        "country_t6jKXz": {
+          "type": "country",
+          "settings": {
+            "flag_emoji": "🇳🇬",
+            "country_name": "Nigeria"
+          }
+        },
+        "country_7kQKLw": {
+          "type": "country",
+          "settings": {
+            "flag_emoji": "🇰🇪",
+            "country_name": "Kenya"
+          }
+        },
+        "country_8VHWnD": {
+          "type": "country",
+          "settings": {
+            "flag_emoji": "🇿🇦",
+            "country_name": "South Africa"
+          }
+        },
+        "country_egtPDr": {
+          "type": "country",
+          "settings": {
+            "flag_emoji": "🇸🇦",
+            "country_name": "Saudi Arabia"
+          }
+        },
+        "country_cnncp6": {
+          "type": "country",
+          "settings": {
+            "flag_emoji": "🇦🇪",
+            "country_name": "UAE"
+          }
+        },
+        "country_wbjUKr": {
+          "type": "country",
+          "settings": {
+            "flag_emoji": "🇶🇦",
+            "country_name": "Qatar"
+          }
+        },
+        "country_AQJAXD": {
+          "type": "country",
+          "settings": {
+            "flag_emoji": "🇲🇽",
+            "country_name": "Mexico"
+          }
+        },
+        "country_T8RjDm": {
+          "type": "country",
+          "settings": {
+            "flag_emoji": "🇧🇷",
+            "country_name": "Brazil"
+          }
+        }
+      },
+      "block_order": [
+        "country_t6jKXz",
+        "country_7kQKLw",
+        "country_8VHWnD",
+        "country_egtPDr",
+        "country_cnncp6",
+        "country_wbjUKr",
+        "country_AQJAXD",
+        "country_T8RjDm"
+      ],
+      "name": "CnTire Market Presence",
+      "settings": {
+        "badge_text": "🌍 TRUST SIGNALS",
+        "title": "Trusted by Buyers in 50+ Countries",
+        "stat_1_value": "12,500+",
+        "stat_1_label": "Containers Delivered",
+        "stat_2_value": "4.8/5",
+        "stat_2_label": "Average Rating",
+        "stat_3_value": "98.5%",
+        "stat_3_label": "On-Time Delivery",
+        "testimonial_text": "Best Chinese tire supplier we've worked with in 5 years. Excellent quality and reliable delivery.",
+        "testimonial_author": "Tunde A., Lagos, Nigeria",
+        "background_color": "#f5f5f5",
+        "heading_color": "#1a1a2e",
+        "accent_color": "#f26522",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "cntire_country_BBKYKP": {
+      "type": "cntire_country",
+      "blocks": {
+        "region_card_JjDVW4": {
+          "type": "region_card",
+          "settings": {
+            "flag_emoji": "🌍",
+            "region_name": "South Africa",
+            "country_list": "South Africa, Kenya, Tanzania, Namibia, Botswana",
+            "link": "/pages/countries",
+            "link_text": "Explore"
+          }
+        },
+        "region_card_KDPDzr": {
+          "type": "region_card",
+          "settings": {
+            "flag_emoji": "🌍",
+            "region_name": "Middle East",
+            "country_list": "Saudi Arabia, UAE, Qatar, Kuwait, Oman",
+            "link": "/pages/countries",
+            "link_text": "Explore"
+          }
+        },
+        "region_card_jAqnKY": {
+          "type": "region_card",
+          "settings": {
+            "flag_emoji": "🌍",
+            "region_name": "West Africa",
+            "country_list": "Nigeria, Ghana, Cameroon, Ivory Coast",
+            "link": "/pages/countries",
+            "link_text": "Explore"
+          }
+        }
+      },
+      "block_order": [
+        "region_card_JjDVW4",
+        "region_card_KDPDzr",
+        "region_card_jAqnKY"
+      ],
+      "name": "CnTire Country Pages",
+      "settings": {
+        "badge_text": "🌍 SEO + CONVERSION",
+        "title": "Shipping to Your Region",
+        "subtitle": "Localized information, pricing, and logistics for your country",
+        "columns_desktop": 3,
+        "background_color": "#ffffff",
+        "heading_color": "#1a1a2e",
+        "accent_color": "#f26522",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "cntire_about_raJ68d": {
+      "type": "cntire-about",
+      "name": "CnTire About",
+      "settings": {
+        "logo": "shopify://shop_images/CnTire.com_09_51335b4e-5d18-4b78-83bb-973995abae78.png",
+        "title": "What is CnTire.com?",
+        "content": "<p>CnTire.com is a global B2B and B2C marketplace specializing in tires, wheels, auto parts, OEM manufacturing, and international tire export.</p><p>Powered by LogiKit, it connects verified manufacturers, suppliers, wholesalers, and buyers worldwide, while providing self-sealing tire technology and global sourcing solutions.</p>",
+        "background_color": "#f5f5f5",
+        "heading_color": "#1a1a2e",
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
+    },
+    "cntire_rfq_83aEUJ": {
+      "type": "cntire-rfq",
+      "blocks": {
+        "country_option_FRJzBz": {
+          "type": "country_option",
+          "settings": {
+            "country_name": "China"
+          }
+        },
+        "country_option_mMXWLJ": {
+          "type": "country_option",
+          "settings": {
+            "country_name": "USA"
+          }
+        },
+        "country_option_kk8dGh": {
+          "type": "country_option",
+          "settings": {
+            "country_name": "UK"
+          }
+        },
+        "country_option_baGgVy": {
+          "type": "country_option",
+          "settings": {
+            "country_name": "Australia"
+          }
+        },
+        "country_option_3KTWkT": {
+          "type": "country_option",
+          "settings": {
+            "country_name": "New Zealand"
+          }
+        },
+        "country_option_eTe9Uj": {
+          "type": "country_option",
+          "settings": {
+            "country_name": "Italy"
+          }
+        },
+        "country_option_6zYa3T": {
+          "type": "country_option",
+          "settings": {
+            "country_name": "Japan"
+          }
+        },
+        "country_option_GVyiwL": {
+          "type": "country_option",
+          "settings": {
+            "country_name": "Russia"
+          }
+        },
+        "country_option_jA4wbd": {
+          "type": "country_option",
+          "settings": {
+            "country_name": "South Korea"
+          }
+        },
+        "country_option_6MGmje": {
+          "type": "country_option",
+          "settings": {
+            "country_name": "India"
+          }
+        },
+        "country_option_QeMKXr": {
+          "type": "country_option",
+          "settings": {
+            "country_name": "Philippines"
+          }
+        },
+        "country_option_dagzDB": {
+          "type": "country_option",
+          "settings": {
+            "country_name": "Indonesia"
+          }
+        },
+        "country_option_NxcJrP": {
+          "type": "country_option",
+          "settings": {
+            "country_name": "Malaysia"
+          }
+        },
+        "country_option_qiURan": {
+          "type": "country_option",
+          "settings": {
+            "country_name": "Thailand"
+          }
+        },
+        "country_option_YtyFbe": {
+          "type": "country_option",
+          "settings": {
+            "country_name": "Pakistan"
+          }
+        },
+        "country_option_kcTKcm": {
+          "type": "country_option",
+          "settings": {
+            "country_name": "Afghanistan"
+          }
+        },
+        "country_option_i6T4YX": {
+          "type": "country_option",
+          "settings": {
+            "country_name": "Nigeria"
+          }
+        },
+        "country_option_cbMXFQ": {
+          "type": "country_option",
+          "settings": {
+            "country_name": "Kenya"
+          }
+        },
+        "country_option_RUGTzh": {
+          "type": "country_option",
+          "settings": {
+            "country_name": "South Africa"
+          }
+        },
+        "country_option_rjbC9J": {
+          "type": "country_option",
+          "settings": {
+            "country_name": "Ghana"
+          }
+        },
+        "country_option_cPeMEU": {
+          "type": "country_option",
+          "settings": {
+            "country_name": "Ethiopia"
+          }
+        },
+        "country_option_7cxaQM": {
+          "type": "country_option",
+          "settings": {
+            "country_name": "Tanzania"
+          }
+        },
+        "country_option_h89qwn": {
+          "type": "country_option",
+          "settings": {
+            "country_name": "Botswana"
+          }
+        },
+        "country_option_LMpBG8": {
+          "type": "country_option",
+          "settings": {
+            "country_name": "Ivory Coast"
+          }
+        },
+        "country_option_GJdrdr": {
+          "type": "country_option",
+          "settings": {
+            "country_name": "Mali"
+          }
+        },
+        "country_option_cU7a7j": {
+          "type": "country_option",
+          "settings": {
+            "country_name": "Senegal"
+          }
+        },
+        "country_option_CmrWV3": {
+          "type": "country_option",
+          "settings": {
+            "country_name": "Côte d'Ivoire"
+          }
+        },
+        "country_option_QCFctm": {
+          "type": "country_option",
+          "settings": {
+            "country_name": "Guinea"
+          }
+        },
+        "country_option_8ApLML": {
+          "type": "country_option",
+          "settings": {
+            "country_name": "Congo"
+          }
+        },
+        "country_option_7z3dPc": {
+          "type": "country_option",
+          "settings": {
+            "country_name": "Kinshasa"
+          }
+        },
+        "country_option_kXhEAE": {
+          "type": "country_option",
+          "settings": {
+            "country_name": "Uganda"
+          }
+        },
+        "country_option_kzkz84": {
+          "type": "country_option",
+          "settings": {
+            "country_name": "Saudi Arabia"
+          }
+        },
+        "country_option_Qy4MyK": {
+          "type": "country_option",
+          "settings": {
+            "country_name": "UAE"
+          }
+        },
+        "country_option_WGXc4k": {
+          "type": "country_option",
+          "settings": {
+            "country_name": "Qatar"
+          }
+        },
+        "country_option_zJdbad": {
+          "type": "country_option",
+          "settings": {
+            "country_name": "Mexico"
+          }
+        },
+        "country_option_wMKmL3": {
+          "type": "country_option",
+          "settings": {
+            "country_name": "Brazil"
+          }
+        },
+        "country_option_MNmgLY": {
+          "type": "country_option",
+          "settings": {
+            "country_name": "Nepal"
+          }
+        },
+        "country_option_MtmiVL": {
+          "type": "country_option",
+          "settings": {
+            "country_name": "Other"
+          }
+        },
+        "product_option_mNGpGm": {
+          "type": "product_option",
+          "settings": {
+            "label": "New Tires"
+          }
+        },
+        "product_option_Qyqfcf": {
+          "type": "product_option",
+          "settings": {
+            "label": "Used Tires"
+          }
+        },
+        "product_option_JQzjaY": {
+          "type": "product_option",
+          "settings": {
+            "label": "Self-Sealing Tire Machine"
+          }
+        },
+        "product_option_ycQcRG": {
+          "type": "product_option",
+          "settings": {
+            "label": "Tire Changer"
+          }
+        },
+        "product_option_XNTaX9": {
+          "type": "product_option",
+          "settings": {
+            "label": "Wheel Balancer"
+          }
+        },
+        "product_option_7RqqhX": {
+          "type": "product_option",
+          "settings": {
+            "label": "Tire Repair Equipment"
+          }
+        },
+        "product_option_bgHM4x": {
+          "type": "product_option",
+          "settings": {
+            "label": "Nitrogen Generator"
+          }
+        },
+        "product_option_KErERf": {
+          "type": "product_option",
+          "settings": {
+            "label": "Combo Package"
+          }
+        },
+        "product_option_WdRNW3": {
+          "type": "product_option",
+          "settings": {
+            "label": "Auto Parts"
+          }
+        }
+      },
+      "block_order": [
+        "country_option_FRJzBz",
+        "country_option_mMXWLJ",
+        "country_option_kk8dGh",
+        "country_option_baGgVy",
+        "country_option_3KTWkT",
+        "country_option_eTe9Uj",
+        "country_option_6zYa3T",
+        "country_option_GVyiwL",
+        "country_option_jA4wbd",
+        "country_option_6MGmje",
+        "country_option_QeMKXr",
+        "country_option_dagzDB",
+        "country_option_NxcJrP",
+        "country_option_qiURan",
+        "country_option_YtyFbe",
+        "country_option_kcTKcm",
+        "country_option_i6T4YX",
+        "country_option_cbMXFQ",
+        "country_option_RUGTzh",
+        "country_option_rjbC9J",
+        "country_option_cPeMEU",
+        "country_option_7cxaQM",
+        "country_option_h89qwn",
+        "country_option_LMpBG8",
+        "country_option_GJdrdr",
+        "country_option_cU7a7j",
+        "country_option_CmrWV3",
+        "country_option_QCFctm",
+        "country_option_8ApLML",
+        "country_option_7z3dPc",
+        "country_option_kXhEAE",
+        "country_option_kzkz84",
+        "country_option_Qy4MyK",
+        "country_option_WGXc4k",
+        "country_option_zJdbad",
+        "country_option_wMKmL3",
+        "country_option_MNmgLY",
+        "country_option_MtmiVL",
+        "product_option_mNGpGm",
+        "product_option_Qyqfcf",
+        "product_option_JQzjaY",
+        "product_option_ycQcRG",
+        "product_option_XNTaX9",
+        "product_option_7RqqhX",
+        "product_option_bgHM4x",
+        "product_option_KErERf",
+        "product_option_WdRNW3"
+      ],
+      "name": "CnTire RFQ",
+      "settings": {
+        "title": "Request for Quotation",
+        "subtitle": "Enjoy the best offered by us",
+        "image": "shopify://shop_images/cntire-rfq-quote.png",
+        "products_label": "Products of Interest",
+        "submit_text": "Submit Your Quote Request",
+        "background_color": "#F8F8F8",
+        "heading_color": "#1A1A2E",
+        "accent_color": "#F26522",
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    },
+    "cntire_testimonials_mJQNRU": {
+      "type": "cntire-testimonials",
+      "blocks": {
+        "testimonial_LJHMMG": {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "text": "The self-sealing tires have cut our fleet flat rate by 80%. Amazing product for African roads!",
+            "avatar_initials": "AK",
+            "author_name": "Ahmed K.",
+            "author_title": "Fleet Manager, Nigeria 🇳🇬"
+          }
+        },
+        "testimonial_E9AtnP": {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "text": "Ordered 200 PCR tires. Great quality, fast delivery, and excellent customer service.",
+            "avatar_initials": "CM",
+            "author_name": "Carlos M.",
+            "author_title": "Distributor, Mexico 🇲🇽"
+          }
+        },
+        "testimonial_g4mDGN": {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "text": "LK-23-AB changer is excellent quality. Easy setup, works perfectly. Highly recommend!",
+            "avatar_initials": "DL",
+            "author_name": "David L.",
+            "author_title": "Tire Shop Owner, USA 🇺🇸"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_LJHMMG",
+        "testimonial_E9AtnP",
+        "testimonial_g4mDGN"
+      ],
+      "name": "CnTire Testimonials",
+      "settings": {
+        "badge_text": "⭐ SOCIAL PROOF",
+        "title": "What Our Customers Say",
+        "slides_desktop": 4,
+        "slides_tablet": 2,
+        "slides_mobile": 1,
+        "autoplay_enabled": true,
+        "autoplay_speed": 5,
+        "background_color": "#ffffff",
+        "heading_color": "#1a1a2e",
+        "accent_color": "#f26522",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "cntire_cta_Bt9QcL": {
+      "type": "cntire-cta",
+      "blocks": {
+        "cta_box_hriaKd": {
+          "type": "cta_box",
+          "settings": {
+            "title": "🚚 Wholesale Inquiry",
+            "text": "Container orders, OEM customization, custom branding",
+            "button_label": "Request Quote",
+            "button_link": "/pages/rfq-center",
+            "response_note": "⚡ Average reply: 2 hours"
+          }
+        },
+        "cta_box_VHPpgh": {
+          "type": "cta_box",
+          "settings": {
+            "title": "🛒 Retail Purchase",
+            "text": "Sample order, small quantity, or single item",
+            "button_label": "Shop Now",
+            "button_link": "/collections/all",
+            "response_note": "🚚 Ships in 24 hours"
+          }
+        }
+      },
+      "block_order": [
+        "cta_box_hriaKd",
+        "cta_box_VHPpgh"
+      ],
+      "name": "CnTire Final CTA",
+      "settings": {
+        "badge_text": "★ FINAL CONVERSION",
+        "title": "💬 Ready to Get Started?",
+        "subtitle": "Whether you're a wholesaler, distributor, or end consumer, we're here to help.",
+        "newsletter_title": "📧 Get Exclusive Offers",
+        "email_placeholder": "Your email address",
+        "subscribe_button_text": "Subscribe",
+        "newsletter_note": "Join 5,000+ subscribers | No spam, unsubscribe anytime",
+        "success_message": "✅ Thanks for subscribing! Check your inbox for exclusive offers.",
+        "background_color": "#1a1a2e",
+        "accent_color": "#f26522",
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
+    }
+  },
+  "order": [
+    "cn_tire_hero_WGbi8H",
+    "cntire_search_6Mz4e8",
+    "cntire_categories_TzXUM8",
+    "value_props_section_g7zFxf",
+    "tech_section_rNcyt8",
+    "cn_tire_market_gqTXCW",
+    "cntire_country_BBKYKP",
+    "cntire_about_raJ68d",
+    "cntire_rfq_83aEUJ",
+    "cntire_testimonials_mJQNRU",
+    "cntire_cta_Bt9QcL"
+  ]
+}

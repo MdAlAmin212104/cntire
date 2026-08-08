@@ -1,0 +1,125 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "rich_text_YeeaCD": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_iYftgj": {
+          "type": "heading",
+          "settings": {
+            "heading": "{{ page.title }}",
+            "heading_size": "h0"
+          }
+        }
+      },
+      "block_order": [
+        "heading_iYftgj"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "left",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
+    },
+    "rfq_center_Fz3FpK": {
+      "type": "RFQ-center",
+      "blocks": {
+        "product_option_b87YTA": {
+          "type": "product_option",
+          "settings": {
+            "label": "Self-Sealing Tires"
+          }
+        },
+        "product_option_x8BU9W": {
+          "type": "product_option",
+          "settings": {
+            "label": "Passenger Car Tires"
+          }
+        },
+        "product_option_bC8d9i": {
+          "type": "product_option",
+          "settings": {
+            "label": "Truck Tires"
+          }
+        },
+        "product_option_AbUQr6": {
+          "type": "product_option",
+          "settings": {
+            "label": "Tire Changers"
+          }
+        },
+        "product_option_YyAmTW": {
+          "type": "product_option",
+          "settings": {
+            "label": "Wheel Balancers"
+          }
+        },
+        "product_option_F8VNQj": {
+          "type": "product_option",
+          "settings": {
+            "label": "Vulcanizers"
+          }
+        },
+        "product_option_jf83C8": {
+          "type": "product_option",
+          "settings": {
+            "label": "Auto Parts"
+          }
+        }
+      },
+      "block_order": [
+        "product_option_b87YTA",
+        "product_option_x8BU9W",
+        "product_option_bC8d9i",
+        "product_option_AbUQr6",
+        "product_option_YyAmTW",
+        "product_option_F8VNQj",
+        "product_option_jf83C8"
+      ],
+      "name": "CnTire RFQ Page",
+      "settings": {
+        "badge_text": "★ B2B CORE",
+        "title": "Request for Quote",
+        "subtitle": "Enjoy the best offered by us",
+        "success_message": "✅ Thank you for your inquiry! Your quote request has been submitted successfully. Our team will get back to you within 24 hours.",
+        "products_label": "Products Interested In",
+        "submit_text": "Submit Your Quote Request",
+        "why_title": "Why Request a Quote?",
+        "why_list": "Bulk pricing discounts\nOEM/ODM customization options\nContainer shipping rates\nDedicated account manager\nFlexible payment terms",
+        "contact_title": "Contact Us Directly",
+        "contact_email_1": "sales@cntire.com",
+        "contact_email_2": "rfq@cntire.com",
+        "contact_phone": "+86 136 8886 2192",
+        "heading_color": "#1A1A2E",
+        "accent_color": "#F26522",
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
+    }
+  },
+  "order": [
+    "main",
+    "rich_text_YeeaCD",
+    "rfq_center_Fz3FpK"
+  ]
+}

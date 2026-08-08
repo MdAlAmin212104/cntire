@@ -1,0 +1,248 @@
+<section class="country-pages-section-{{ section.id }}">
+  <div class="page-width">
+    <div class="section-header-{{ section.id }}">
+      {% if section.settings.badge_text != blank %}
+        <span class="section-label-{{ section.id }}">{{ section.settings.badge_text }}</span>
+      {% endif %}
+      {% if section.settings.title != blank %}
+        <h2>{{ section.settings.title }}</h2>
+      {% endif %}
+      {% if section.settings.subtitle != blank %}
+        <p>{{ section.settings.subtitle }}</p>
+      {% endif %}
+    </div>
+
+    {% if section.blocks.size > 0 %}
+      <div class="country-grid-{{ section.id }}">
+        {% for block in section.blocks %}
+          {% if block.type == 'region_card' %}
+            <a href="{{ block.settings.link }}" class="country-card-{{ section.id }}" {{ block.shopify_attributes }}>
+              <div class="country-flag-{{ section.id }}">{{ block.settings.flag_emoji }}</div>
+              <div class="country-name-{{ section.id }}">{{ block.settings.region_name }}</div>
+              <div class="country-list-{{ section.id }}">{{ block.settings.country_list }}</div>
+              <span class="country-link-{{ section.id }}">{{ block.settings.link_text }} →</span>
+            </a>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+<style>
+.country-pages-section-{{ section.id }} {
+  padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px;
+  background: {{ section.settings.background_color }};
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+.section-header-{{ section.id }} { text-align: center; margin-bottom: 40px; }
+.section-label-{{ section.id }} {
+  background: {{ section.settings.accent_color }};
+  color: white;
+  padding: 4px 12px;
+  font-size: 11px;
+  border-radius: 4px;
+  display: inline-block;
+  margin-bottom: 8px;
+}
+.section-header-{{ section.id }} h2 {
+  font-size: 32px;
+  margin-bottom: 12px;
+  color: {{ section.settings.heading_color }};
+  font-weight: 700;
+}
+.section-header-{{ section.id }} p {
+  color: #666;
+  font-size: 18px;
+  margin: 0;
+}
+.country-grid-{{ section.id }} {
+  display: grid;
+  grid-template-columns: repeat({{ section.settings.columns_desktop }}, 1fr);
+  gap: 24px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.country-card-{{ section.id }} {
+  border: 1px solid #E5E5E5;
+  border-radius: 12px;
+  padding: 30px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-decoration: none;
+  display: block;
+}
+.country-card-{{ section.id }}:hover {
+  border-color: {{ section.settings.accent_color }};
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+}
+.country-flag-{{ section.id }} { font-size: 48px; margin-bottom: 16px; }
+.country-name-{{ section.id }} { font-weight: 700; font-size: 18px; margin-bottom: 10px; color: {{ section.settings.heading_color }}; }
+.country-list-{{ section.id }} { font-size: 13px; color: #666; margin-bottom: 16px; line-height: 1.6; }
+.country-link-{{ section.id }} { color: {{ section.settings.accent_color }}; font-weight: 700; font-size: 14px; }
+@media (max-width: 768px) {
+  .country-grid-{{ section.id }} { grid-template-columns: 1fr; }
+}
+</style>
+
+{% schema %}
+{
+  "name": "CnTire Country Pages",
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge text",
+      "default": "🌍 SEO + CONVERSION"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Shipping to Your Region"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subheading",
+      "default": "Localized information, pricing, and logistics for your country"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "label": "Columns (desktop)",
+      "default": 3
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Section background",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading / text color",
+      "default": "#1A1A2E"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent color",
+      "default": "#F26522"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 60
+    }
+  ],
+  "blocks": [
+    {
+      "type": "region_card",
+      "name": "Region Card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "flag_emoji",
+          "label": "Flag/icon",
+          "default": "🌍"
+        },
+        {
+          "type": "text",
+          "id": "region_name",
+          "label": "Region name",
+          "default": "Region"
+        },
+        {
+          "type": "text",
+          "id": "country_list",
+          "label": "Country list",
+          "default": "Country 1, Country 2, Country 3"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        },
+        {
+          "type": "text",
+          "id": "link_text",
+          "label": "Link text",
+          "default": "Explore"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 8,
+  "presets": [
+    {
+      "name": "CnTire Country Pages",
+      "blocks": [
+        {
+          "type": "region_card",
+          "settings": {
+            "flag_emoji": "🌍",
+            "region_name": "South Africa",
+            "country_list": "South Africa, Kenya, Tanzania, Namibia, Botswana",
+            "link": "/pages/countries",
+            "link_text": "Explore"
+          }
+        },
+        {
+          "type": "region_card",
+          "settings": {
+            "flag_emoji": "🌍",
+            "region_name": "Middle East",
+            "country_list": "Saudi Arabia, UAE, Qatar, Kuwait, Oman",
+            "link": "/pages/countries",
+            "link_text": "Explore"
+          }
+        },
+        {
+          "type": "region_card",
+          "settings": {
+            "flag_emoji": "🌍",
+            "region_name": "West Africa",
+            "country_list": "Nigeria, Ghana, Cameroon, Ivory Coast",
+            "link": "/pages/countries",
+            "link_text": "Explore"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
