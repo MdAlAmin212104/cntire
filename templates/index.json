@@ -882,7 +882,7 @@
       "settings": {
         "badge_text": "⭐ SOCIAL PROOF",
         "title": "What Our Customers Say",
-        "slides_desktop": 4,
+        "slides_desktop": 3,
         "slides_tablet": 2,
         "slides_mobile": 1,
         "autoplay_enabled": true,

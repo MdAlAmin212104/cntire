@@ -25,7 +25,7 @@
                 <div class="testimonial-card-{{ section.id }}" data-slide {{ block.shopify_attributes }}>
                   {% if block.settings.rating > 0 %}
                     <div class="testimonial-stars-{{ section.id }}">
-                      {% for i in (1..5) %}{% if i <= block.settings.rating %}⭐{% endif %}{% endfor %}
+                      {% for i in (1..block.settings.rating) %}⭐{% endfor %}
                     </div>
                   {% endif %}
                   {% if block.settings.text != blank %}
@@ -55,11 +55,12 @@
 
 <style>
 .testimonials-{{ section.id }} {
-  padding: {{ section.settings.padding_top }}px 40px {{ section.settings.padding_bottom }}px;
+  padding-top: {{ section.settings.padding_top }}px;
+  padding-bottom: {{ section.settings.padding_bottom }}px;
   background: {{ section.settings.background_color }};
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
-.section-header-{{ section.id }} { text-align: center; margin-bottom: 40px; }
+.section-header-{{ section.id }} { text-align: center; margin-bottom: 36px; }
 .section-badge-{{ section.id }} {
   background: {{ section.settings.accent_color }};
   color: white;
@@ -79,41 +80,53 @@
 }
 .testimonial-slider-{{ section.id }} {
   position: relative;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 56px;
+  width: 100%;
+  padding: 0 48px;
+  box-sizing: border-box;
+  --per-view: {{ section.settings.slides_desktop }};
+  --gap: 24px;
 }
 .slider-viewport-{{ section.id }} {
   overflow: hidden;
+  width: 100%;
+  border-radius: 12px;
 }
 .slider-track-{{ section.id }} {
   display: flex;
+  gap: var(--gap);
   will-change: transform;
+  align-items: stretch;
 }
 .testimonial-card-{{ section.id }} {
-  flex: 0 0 auto;
+  flex: 0 0 calc((100% - (var(--gap) * (var(--per-view) - 1))) / var(--per-view));
+  width: calc((100% - (var(--gap) * (var(--per-view) - 1))) / var(--per-view));
   background: #F5F5F5;
-  padding: 30px;
+  padding: 28px 24px;
   border-radius: 12px;
-  margin-right: 24px;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .testimonial-stars-{{ section.id }} {
   color: #FFC107;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
   font-size: 16px;
+  line-height: 1;
 }
 .testimonial-text-{{ section.id }} {
   font-size: 15px;
-  line-height: 1.7;
+  line-height: 1.6;
   margin-bottom: 20px;
   color: #333;
   font-style: italic;
+  flex-grow: 1;
 }
 .testimonial-author-{{ section.id }} {
   display: flex;
   align-items: center;
   gap: 12px;
+  margin-top: auto;
 }
 .author-avatar-{{ section.id }} {
   width: 44px;
@@ -147,7 +160,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: border-color 0.2s, color 0.2s;
+  transition: border-color 0.2s, color 0.2s, background-color 0.2s;
+  z-index: 2;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
 }
 .slider-arrow-{{ section.id }}:hover { border-color: {{ section.settings.accent_color }}; color: {{ section.settings.accent_color }}; }
 .slider-arrow-prev-{{ section.id }} { left: 0; }
@@ -167,7 +182,7 @@
   background: #D5D5D5;
   cursor: pointer;
   padding: 0;
-  transition: background 0.2s, width 0.2s;
+  transition: background 0.2s, width 0.2s, border-radius 0.2s;
 }
 .slider-dots-{{ section.id }} button.active {
   background: {{ section.settings.accent_color }};
@@ -176,11 +191,21 @@
 }
 
 @media (max-width: 1024px) {
-  .testimonial-slider-{{ section.id }} { padding: 0 44px; }
+  .testimonial-slider-{{ section.id }} {
+    padding: 0 40px;
+    --per-view: {{ section.settings.slides_tablet }};
+    --gap: 20px;
+  }
 }
 @media (max-width: 600px) {
-  .testimonial-slider-{{ section.id }} { padding: 0 36px; }
+  .testimonial-slider-{{ section.id }} {
+    padding: 0 32px;
+    --per-view: {{ section.settings.slides_mobile }};
+    --gap: 16px;
+  }
   .slider-arrow-{{ section.id }} { width: 32px; height: 32px; font-size: 18px; }
+  .section-header-{{ section.id }} h2 { font-size: 24px; }
+  .testimonial-card-{{ section.id }} { padding: 20px 16px; }
 }
 </style>
 
@@ -193,11 +218,12 @@
     wrapper.dataset.initialized = 'true';
 
     var track = wrapper.querySelector('.slider-track-{{ section.id }}');
-    var viewport = wrapper.querySelector('.slider-viewport-{{ section.id }}');
     var originalSlides = Array.prototype.slice.call(track.children);
     var dotsWrap = wrapper.querySelector('[data-slider-dots]');
     var prevBtn = wrapper.querySelector('[data-slider-prev]');
     var nextBtn = wrapper.querySelector('[data-slider-next]');
+
+    if (originalSlides.length === 0) return;
 
     var autoplay = wrapper.dataset.autoplay === 'true';
     var autoplaySpeed = parseInt(wrapper.dataset.autoplaySpeed, 10) || 5000;
@@ -214,48 +240,57 @@
     var total = originalSlides.length;
     var index = perView;
 
-    // Clone slides at start/end for seamless infinite loop
     function buildClones() {
       track.querySelectorAll('[data-clone]').forEach(function(el) { el.remove(); });
-      var head = originalSlides.slice(0, perView).map(function(el) {
+
+      var tailClones = originalSlides.slice(-perView).map(function(el) {
         var c = el.cloneNode(true);
         c.setAttribute('data-clone', 'true');
         return c;
       });
-      var tail = originalSlides.slice(total - perView).map(function(el) {
+      var headClones = originalSlides.slice(0, perView).map(function(el) {
         var c = el.cloneNode(true);
         c.setAttribute('data-clone', 'true');
         return c;
       });
-      tail.reverse().forEach(function(c) { track.insertBefore(c, track.firstChild); });
-      head.forEach(function(c) { track.appendChild(c); });
+
+      tailClones.reverse().forEach(function(c) { track.insertBefore(c, track.firstChild); });
+      headClones.forEach(function(c) { track.appendChild(c); });
     }
 
-    function slideWidth() {
-      return track.children[0].getBoundingClientRect().width + 24;
+    function getStepDistance() {
+      if (!track.children[0]) return 0;
+      var cardWidth = track.children[0].getBoundingClientRect().width;
+      var gap = parseFloat(window.getComputedStyle(track).gap) || 24;
+      return cardWidth + gap;
     }
 
     function setPosition(instant) {
-      track.style.transition = instant ? 'none' : 'transform 0.4s ease';
-      track.style.transform = 'translateX(' + (-index * slideWidth()) + 'px)';
+      track.style.transition = instant ? 'none' : 'transform 0.4s cubic-bezier(0.25, 1, 0.5, 1)';
+      var step = getStepDistance();
+      track.style.transform = 'translateX(' + (-index * step) + 'px)';
     }
 
     function buildDots() {
+      if (!dotsWrap) return;
       dotsWrap.innerHTML = '';
-      var pages = Math.max(1, total - perView + 1);
       for (var i = 0; i < total; i++) {
         var dot = document.createElement('button');
         dot.type = 'button';
         dot.setAttribute('aria-label', 'Go to testimonial ' + (i + 1));
-        dot.addEventListener('click', function(i) {
-          return function() { goTo(i + perView); resetAutoplay(); };
-        }(i));
+        (function(slideIdx) {
+          dot.addEventListener('click', function() {
+            goTo(slideIdx + perView);
+            resetAutoplay();
+          });
+        })(i);
         dotsWrap.appendChild(dot);
       }
       updateDots();
     }
 
     function updateDots() {
+      if (!dotsWrap) return;
       var dots = dotsWrap.querySelectorAll('button');
       var real = ((index - perView) % total + total) % total;
       dots.forEach(function(d, i) { d.classList.toggle('active', i === real); });
@@ -273,15 +308,51 @@
     track.addEventListener('transitionend', function() {
       var min = perView;
       var max = perView + total - 1;
-      if (index > max) { index = min; setPosition(true); updateDots(); }
-      if (index < min) { index = max; setPosition(true); updateDots(); }
+      if (index > max) {
+        index = min + (index - max - 1);
+        setPosition(true);
+        updateDots();
+      }
+      if (index < min) {
+        index = max - (min - index - 1);
+        setPosition(true);
+        updateDots();
+      }
     });
 
-    prevBtn.addEventListener('click', function() { prev(); resetAutoplay(); });
-    nextBtn.addEventListener('click', function() { next(); resetAutoplay(); });
+    if (prevBtn) prevBtn.addEventListener('click', function() { prev(); resetAutoplay(); });
+    if (nextBtn) nextBtn.addEventListener('click', function() { next(); resetAutoplay(); });
+
+    var startX = 0;
+    var currentX = 0;
+    var isSwiping = false;
+
+    track.addEventListener('touchstart', function(e) {
+      startX = e.touches[0].clientX;
+      isSwiping = true;
+      stopAutoplay();
+    }, { passive: true });
+
+    track.addEventListener('touchmove', function(e) {
+      if (!isSwiping) return;
+      currentX = e.touches[0].clientX;
+    }, { passive: true });
+
+    track.addEventListener('touchend', function() {
+      if (!isSwiping) return;
+      isSwiping = false;
+      var diffX = startX - currentX;
+      if (Math.abs(diffX) > 40 && currentX !== 0) {
+        if (diffX > 0) next();
+        else prev();
+      }
+      startX = 0;
+      currentX = 0;
+      resetAutoplay();
+    });
 
     function startAutoplay() {
-      if (!autoplay) return;
+      if (!autoplay || total <= perView) return;
       stopAutoplay();
       autoplayTimer = setInterval(next, autoplaySpeed);
     }
@@ -305,11 +376,9 @@
           index = perView;
           buildClones();
           buildDots();
-          setPosition(true);
-        } else {
-          setPosition(true);
         }
-      }, 150);
+        setPosition(true);
+      }, 100);
     });
 
     buildClones();
