@@ -1,163 +1,650 @@
-<section class="search-section">
-  <div class="search-tabs">
-    <div class="search-tab active" onclick="ctSwitchSearch('vehicle')">🚗 By Vehicle</div>
-    <div class="search-tab" onclick="ctSwitchSearch('keyword')">🔍 By Keyword</div>
-  </div>
-  <div id="vehicle-search" class="search-panel">
-    <h3>🔍 Tires for Your Vehicle</h3>
-    <p class="search-subtitle">Knowing your specific vehicle gives us the best opportunity to outfit you with tires that are guaranteed to fit.</p>
-    <div class="search-container">
-      <div class="ymm-grid">
-        <div class="ymm-field">
-          <span class="ymm-number">1</span>
-          <select class="ymm-select"><option>Select Year</option><option>2026</option><option>2025</option><option>2024</option><option>2023</option><option>2022</option><option>2021</option><option>2020</option></select>
-        </div>
-        <div class="ymm-field">
-          <span class="ymm-number">2</span>
-          <select class="ymm-select"><option>Select Make</option><option>Toyota</option><option>Honda</option><option>Ford</option><option>BMW</option><option>Mercedes-Benz</option><option>Audi</option></select>
-        </div>
-        <div class="ymm-field">
-          <span class="ymm-number">3</span>
-          <select class="ymm-select"><option>Select Model</option><option>Camry</option><option>Corolla</option><option>RAV4</option><option>Hilux</option></select>
-        </div>
-        <div class="ymm-field">
-          <span class="ymm-number">4</span>
-          <select class="ymm-select"><option>Select Trim/Drive</option><option>2WD</option><option>4WD</option><option>AWD</option></select>
-        </div>
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  .cntire-search-wrapper-{{ section.id }} {
+    background-color: {{ section.settings.background_color | default: '#F5F5F5' }};
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  .cntire-search-grid-{{ section.id }} {
+    display: grid !important;
+    grid-template-columns: repeat({{ section.settings.columns_desktop | default: 4 }}, 1fr) !important;
+    gap: 24px !important;
+    margin-top: 30px;
+  }
+
+  @media (max-width: 1200px) {
+    .cntire-search-grid-{{ section.id }} {
+      grid-template-columns: repeat(3, 1fr) !important;
+    }
+  }
+  @media (max-width: 900px) {
+    .cntire-search-grid-{{ section.id }} {
+      grid-template-columns: repeat(2, 1fr) !important;
+    }
+  }
+  @media (max-width: 600px) {
+    .cntire-search-grid-{{ section.id }} {
+      grid-template-columns: 1fr !important;
+    }
+  }
+
+  .cntire-pag-btn {
+    background: #FFF;
+    border: 1px solid #E5E5E5;
+    color: #333;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .cntire-pag-btn:hover:not(.disabled):not(.active) {
+    border-color: #F26522;
+    color: #F26522;
+  }
+  .cntire-pag-btn.active {
+    background: #F26522;
+    border-color: #F26522;
+    color: #FFF;
+    cursor: default;
+  }
+  .cntire-pag-btn.disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+  .cntire-search-wrapper .tag-link:hover {
+    background: #F26522 !important;
+    color: white !important;
+    border-color: #F26522 !important;
+  }
+{%- endstyle -%}
+
+<section class="cntire-search-wrapper cntire-search-wrapper-{{ section.id }} section-{{ section.id }}-padding" id="cntire-search-{{ section.id }}">
+  <div class="page-width search-section-inner" style="max-width: 1300px; margin: 0 auto; padding: 0 20px;">
+
+    {%- if section.settings.heading != blank or section.settings.subheading != blank -%}
+      <div class="search-header" style="text-align: center; margin-bottom: 25px;">
+        {%- if section.settings.heading != blank -%}
+          <h2 style="font-size: 28px; font-weight: 700; color: #1A1A2E; margin: 0 0 8px;">
+            {{ section.settings.heading }}
+          </h2>
+        {%- endif -%}
+        {%- if section.settings.subheading != blank -%}
+          <p style="font-size: 16px; color: #666; margin: 0;">
+            {{ section.settings.subheading }}
+          </p>
+        {%- endif -%}
       </div>
-      <div class="ymm-actions">
-        <button class="ymm-search-btn">🔍 Search Tires</button>
-        <span class="ymm-reset">↻ Reset</span>
-      </div>
+    {%- endif -%}
+
+    <div class="search-container" style="background: white; border-radius: 12px; padding: 30px; max-width: 900px; margin: 0 auto; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+      <form id="KeywordSearchForm-{{ section.id }}" class="keyword-box" onsubmit="return false;" style="display: flex; gap: 12px; max-width: 700px; margin: 0 auto; position: relative;">
+        <div style="position: relative; width: 100%;">
+          <input
+            type="text"
+            id="KeywordInput-{{ section.id }}"
+            class="keyword-input"
+            placeholder="{{ section.settings.placeholder_text | escape }}"
+            aria-label="Search keywords"
+            autocomplete="off"
+            style="width: 100%; padding: 16px 40px 16px 20px; border: 2px solid #E5E5E5; border-radius: 8px; font-size: 16px; outline: none; transition: border-color 0.2s; box-sizing: border-box;"
+          >
+          <button
+            type="button"
+            id="ClearSearchBtn-{{ section.id }}"
+            title="Clear search"
+            style="display: none; position: absolute; right: 12px; top: 50%; transform: translateY(-50%); background: none; border: none; font-size: 18px; color: #999; cursor: pointer; padding: 4px;"
+          >&times;</button>
+        </div>
+      </form>
+
+      {%- if section.settings.show_browse_tags -%}
+        <div class="popular-tags" style="display: flex; justify-content: center; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 24px;">
+          {%- if section.settings.browse_tags_title != blank -%}
+            <span style="color: #666; font-size: 14px; display: flex; align-items: center;">
+              {{ section.settings.browse_tags_title }}
+            </span>
+          {%- endif -%}
+
+          {%- if section.blocks.size > 0 -%}
+            {%- for block in section.blocks -%}
+              {%- if block.type == 'tag' -%}
+                <a
+                  href="{{ block.settings.url | default: '#' }}"
+                  class="tag-link"
+                  data-keyword="{{ block.settings.keyword | default: block.settings.label | escape }}"
+                  style="background: white; border: 1px solid #E5E5E5; padding: 8px 18px; border-radius: 20px; font-size: 14px; color: #333; text-decoration: none; transition: all 0.3s;"
+                >
+                  {{ block.settings.label }}
+                </a>
+              {%- endif -%}
+            {%- endfor -%}
+          {%- else -%}
+            <a href="#" class="tag-link" data-keyword="Passenger Tires" style="background: white; border: 1px solid #E5E5E5; padding: 8px 18px; border-radius: 20px; font-size: 14px; color: #333; text-decoration: none; transition: all 0.3s;">Passenger Tires</a>
+            <a href="#" class="tag-link" data-keyword="Tire Changers" style="background: white; border: 1px solid #E5E5E5; padding: 8px 18px; border-radius: 20px; font-size: 14px; color: #333; text-decoration: none; transition: all 0.3s;">Tire Changers</a>
+            <a href="#" class="tag-link" data-keyword="Self-Sealing" style="background: white; border: 1px solid #E5E5E5; padding: 8px 18px; border-radius: 20px; font-size: 14px; color: #333; text-decoration: none; transition: all 0.3s;">Self-Sealing</a>
+            <a href="#" class="tag-link" data-keyword="Bulk Order" style="background: white; border: 1px solid #E5E5E5; padding: 8px 18px; border-radius: 20px; font-size: 14px; color: #333; text-decoration: none; transition: all 0.3s;">Bulk Order</a>
+            <a href="#" class="tag-link" data-keyword="Used Tires" style="background: white; border: 1px solid #E5E5E5; padding: 8px 18px; border-radius: 20px; font-size: 14px; color: #333; text-decoration: none; transition: all 0.3s;">Used Tires</a>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
     </div>
-  </div>
-  <div id="keyword-search" class="search-panel" style="display:none;">
-    <h3>🔍 What are you looking for?</h3>
-    <p class="search-subtitle">Search by tire size, SKU, equipment model, or keyword</p>
-    <div class="search-container">
-      <div class="keyword-box">
-        <input type="text" class="keyword-input" placeholder="e.g. LK-23-AB, PCR 205/55R16, Self-Sealing Machine...">
-        <button class="search-btn">Search</button>
-      </div>
+
+    <!-- Active Search Query Indicator -->
+    <div id="SearchStatus-{{ section.id }}" style="display: none; text-align: center; margin-top: 24px; color: #555; font-size: 15px;">
+      Showing results for <strong id="SearchQueryTerm-{{ section.id }}" style="color: #F26522;"></strong>
+      (<span id="SearchResultCount-{{ section.id }}">0</span> found)
+      <button id="ResetSearchBtn-{{ section.id }}" style="margin-left: 10px; background: none; border: 1px solid #ccc; padding: 4px 12px; border-radius: 14px; font-size: 13px; cursor: pointer; color: #666;">Clear Filter ↻</button>
     </div>
-  </div>
-  <div class="popular-tags">
-    <span style="color:#666;font-size:14px; display: flex;
-    align-items: center;">Or browse by:</span>
-    <a href="/collections/passenger-car-tires" class="tag-link">Passenger Tires</a>
-    <a href="/collections/tire-service-equipment" class="tag-link">Tire Changers</a>
-    <a href="/collections/self-sealing-tire-machines" class="tag-link">Self-Sealing</a>
-    <a href="/pages/wholesale-bulk-order" class="tag-link">Bulk Order</a>
-    <a href="/collections/used-tires" class="tag-link">Used Tires</a>
+
+    <!-- Product Card Grid -->
+    {%- assign search_collection = section.settings.collection -%}
+    {%- if search_collection == blank -%}
+      {%- assign search_collection = collections.all -%}
+    {%- endif -%}
+
+    {%- paginate search_collection.products by 250 -%}
+      <div
+        id="SearchGrid-{{ section.id }}"
+        class="cntire-search-grid-{{ section.id }}"
+      >
+        {%- for product in search_collection.products -%}
+          {%- capture kw_list -%}
+            {%- if product.metafields.custom.keywords.value != blank -%}
+              {%- for item in product.metafields.custom.keywords.value -%}
+                {{ item | downcase | strip }}|
+              {%- endfor -%}
+            {%- endif -%}
+            {{ product.title | downcase | strip }}|
+            {{ product.tags | join: '|' | downcase | strip }}|
+            {{ product.vendor | downcase | strip }}|
+            {{ product.type | downcase | strip }}
+          {%- endcapture -%}
+          {%- assign kw_list = kw_list | strip_newlines | replace: '  ', ' ' | strip -%}
+
+          <div
+            class="cntire-product-item"
+            data-keywords="{{ kw_list | escape }}"
+            data-title="{{ product.title | escape | downcase }}"
+            style="display: none;"
+          >
+            {% render 'card-product', card_product: product, section_id: section.id %}
+          </div>
+        {%- else -%}
+          <!-- Placeholder card when collection has no products -->
+          <div class="cntire-product-item" data-keywords="passenger tires|tire changers|self-sealing|bulk order|used tires">
+            {% render 'card-product', card_product: nil, section_id: section.id %}
+          </div>
+        {%- endfor -%}
+      </div>
+    {%- endpaginate -%}
+
+    <!-- No Products Found State -->
+    <div id="NoResults-{{ section.id }}" style="display: none; text-align: center; padding: 50px 20px; background: #FFF; border-radius: 12px; margin-top: 30px; border: 1px solid #E5E5E5;">
+      <div style="font-size: 48px; margin-bottom: 12px;">🔍</div>
+      <h3 style="font-size: 22px; color: #1A1A2E; margin: 0 0 10px; font-weight: 700;">No products found</h3>
+      <p style="font-size: 15px; color: #666; max-width: 500px; margin: 0 auto 20px;">
+        We couldn't find any products matching "<span id="NoResultsQuery-{{ section.id }}" style="font-weight: 600; color: #1A1A2E;"></span>". Try searching with a different keyword or tire size.
+      </p>
+      <a
+        href="{{ section.settings.no_results_url | default: '/collections/all' }}"
+        id="NoResultsResetBtn-{{ section.id }}"
+        style="display: inline-block; background: #F26522; color: #FFF; border: none; padding: 12px 28px; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 14px; text-decoration: none; transition: background 0.2s;"
+      >
+        {{ section.settings.no_results_button_label | default: 'View All Products' }}
+      </a>
+    </div>
+
+    <!-- Section-Specific Pagination -->
+    <div
+      id="PaginationWrapper-{{ section.id }}"
+      style="display: none; margin-top: 35px; text-align: center; flex-direction: column; align-items: center; gap: 12px;"
+    >
+      <div id="PaginationSummary-{{ section.id }}" style="font-size: 14px; color: #666;"></div>
+      <div id="PaginationNav-{{ section.id }}" style="display: flex; gap: 6px; justify-content: center; align-items: center; flex-wrap: wrap;"></div>
+    </div>
+
   </div>
 </section>
 
-<style>
-.search-section {
-  padding: 60px 40px;
-  background: #F5F5F5;
-  text-align: center;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-}
-.search-tabs {
-  display: flex;
-  justify-content: center;
-  gap: 0;
-  margin-bottom: 30px;
-}
-.search-tab {
-  padding: 14px 32px;
-  background: white;
-  border: 2px solid #E5E5E5;
-  cursor: pointer;
-  font-size: 15px;
-  font-weight: 500;
-  transition: all 0.3s;
-  user-select: none;
-}
-.search-tab:first-child { border-radius: 8px 0 0 8px; border-right: none; }
-.search-tab:last-child { border-radius: 0 8px 8px 0; }
-.search-tab.active { background: #F26522; color: white; border-color: #F26522; }
-.search-section h3 { font-size: 28px; margin-bottom: 8px; color: #1A1A2E; }
-.search-subtitle { font-size: 16px; color: #666; margin-bottom: 30px; }
-.search-container {
-  background: white;
-  border-radius: 12px;
-  padding: 30px;
-  max-width: 900px;
-  margin: 0 auto;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-}
-.ymm-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 20px; }
-.ymm-field { position: relative; }
-.ymm-number {
-  position: absolute; left: 12px; top: 50%; transform: translateY(-50%);
-  width: 28px; height: 28px; background: #1A1A2E; color: white;
-  border-radius: 50%; display: flex; align-items: center; justify-content: center;
-  font-size: 13px; font-weight: 700;
-}
-.ymm-select {
-  width: 100%; padding: 16px 16px 16px 48px;
-  border: 2px solid #E5E5E5; border-radius: 8px;
-  font-size: 15px; background: white; cursor: pointer;
-  appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 14px center;
-}
-.ymm-select:focus { border-color: #F26522; outline: none; }
-.keyword-box { display: flex; gap: 12px; max-width: 700px; margin: 0 auto; }
-.keyword-input {
-  flex: 1; padding: 16px 24px; border: 2px solid #E5E5E5;
-  border-radius: 8px; font-size: 16px;
-}
-.keyword-input:focus { border-color: #F26522; outline: none; }
-.search-btn {
-  background: #F26522; color: white; padding: 16px 40px;
-  border: none; border-radius: 8px; font-size: 16px;
-  font-weight: 700; cursor: pointer;
-}
-.ymm-actions { display: flex; gap: 20px; align-items: center; justify-content: center; }
-.ymm-search-btn {
-  background: #F26522; color: white; padding: 16px 50px;
-  border: none; border-radius: 8px; font-size: 16px;
-  font-weight: 700; cursor: pointer;
-}
-.ymm-reset { color: #666; font-size: 14px; cursor: pointer; }
-.popular-tags {
-  display: flex; justify-content: center; gap: 12px;
-  flex-wrap: wrap; margin-top: 24px;
-}
-.tag-link {
-  background: white; border: 1px solid #E5E5E5;
-  padding: 8px 18px; border-radius: 20px;
-  font-size: 14px; color: #333; text-decoration: none;
-  transition: all 0.3s;
-}
-.tag-link:hover { background: #F26522; color: white; border-color: #F26522; }
-@media (max-width: 768px) {
-  .nav-menu { display: none; }
-  .ymm-grid { grid-template-columns: 1fr; }
-  .keyword-box { flex-direction: column; }
-  .search-tabs { flex-direction: column; }
-  .search-tab:first-child, .search-tab:last-child { border-radius: 8px; border-right: 2px solid #E5E5E5; }
-}
-</style>
-
 <script>
-function ctSwitchSearch(type) {
-  document.querySelectorAll('.search-tab').forEach(function(t){ t.classList.remove('active'); });
-  if (event && event.target) event.target.classList.add('active');
-  if (type === 'vehicle') {
-    document.getElementById('vehicle-search').style.display = 'block';
-    document.getElementById('keyword-search').style.display = 'none';
-  } else {
-    document.getElementById('vehicle-search').style.display = 'none';
-    document.getElementById('keyword-search').style.display = 'block';
-  }
-}
+document.addEventListener('DOMContentLoaded', function() {
+  (function() {
+    const sectionId = {{ section.id | json }};
+    const productsPerPage = {{ section.settings.products_per_page | default: 8 }};
+
+    const container = document.getElementById('cntire-search-' + sectionId);
+    if (!container) return;
+
+    const input = document.getElementById('KeywordInput-' + sectionId);
+    const form = document.getElementById('KeywordSearchForm-' + sectionId);
+    const clearBtn = document.getElementById('ClearSearchBtn-' + sectionId);
+    const resetBtn = document.getElementById('ResetSearchBtn-' + sectionId);
+    const noResultsResetBtn = document.getElementById('NoResultsResetBtn-' + sectionId);
+
+    const grid = document.getElementById('SearchGrid-' + sectionId);
+    const statusBox = document.getElementById('SearchStatus-' + sectionId);
+    const termSpan = document.getElementById('SearchQueryTerm-' + sectionId);
+    const countSpan = document.getElementById('SearchResultCount-' + sectionId);
+
+    const noResults = document.getElementById('NoResults-' + sectionId);
+    const noResultsQuery = document.getElementById('NoResultsQuery-' + sectionId);
+
+    const paginationWrapper = document.getElementById('PaginationWrapper-' + sectionId);
+    const paginationSummary = document.getElementById('PaginationSummary-' + sectionId);
+    const paginationNav = document.getElementById('PaginationNav-' + sectionId);
+
+    // Guard: bail out if any required node is missing (prevents a broken/duplicate
+    // section instance from throwing errors that could leave states stuck visible)
+    if (!input || !form || !clearBtn || !grid || !statusBox || !termSpan || !countSpan ||
+        !noResults || !noResultsQuery || !paginationWrapper || !paginationSummary || !paginationNav) {
+      return;
+    }
+
+    const allItems = Array.from(grid.querySelectorAll('.cntire-product-item'));
+
+    let currentPage = 1;
+    let currentQuery = '';
+    let matchedItems = [];
+
+    // Splits a product's keyword string into clean tokens (by "|", commas, and whitespace)
+    function tokenize(str) {
+      return (str || '')
+        .toLowerCase()
+        .split(/[|,]+/)
+        .map(function (s) { return s.trim(); })
+        .filter(Boolean);
+    }
+
+    // A product matches if the query equals a whole keyword phrase, or is a
+    // whole-word-prefix match within it (e.g. "pass" -> "passenger tires").
+    // This avoids random mid-word substring hits (e.g. "pass" -> "bypass").
+    function isMatch(dataKeywords, query) {
+      if (!query) return false;
+      const tokens = tokenize(dataKeywords);
+      for (let i = 0; i < tokens.length; i++) {
+        const phrase = tokens[i];
+        if (phrase === query) return true;
+        if (phrase.indexOf(query) === 0) return true; // starts with query
+        const words = phrase.split(/\s+/);
+        for (let j = 0; j < words.length; j++) {
+          if (words[j] === query || words[j].indexOf(query) === 0) return true;
+        }
+      }
+      return false;
+    }
+
+    function resetVisibleStates() {
+      grid.style.display = 'none';
+      noResults.style.display = 'none';
+      paginationWrapper.style.display = 'none';
+      statusBox.style.display = 'none';
+    }
+
+    function renderPage(page) {
+      currentPage = page;
+
+      // Always clear all visibility states first so only ONE state can ever show at once
+      resetVisibleStates();
+
+      if (!currentQuery || currentQuery.length === 0) {
+        // Initial state: nothing searched yet
+        clearBtn.style.display = 'none';
+        allItems.forEach(function (item) { item.style.display = 'none'; });
+        return;
+      }
+
+      const totalMatches = matchedItems.length;
+
+      if (totalMatches === 0) {
+        allItems.forEach(function (item) { item.style.display = 'none'; });
+        noResults.style.display = 'block';
+        if (currentQuery) {
+          noResultsQuery.textContent = currentQuery;
+        }
+        return;
+      }
+
+      grid.style.display = 'grid';
+      statusBox.style.display = 'block';
+
+      const totalPages = Math.ceil(totalMatches / productsPerPage);
+      if (currentPage > totalPages) currentPage = totalPages;
+      if (currentPage < 1) currentPage = 1;
+
+      const startIndex = (currentPage - 1) * productsPerPage;
+      const endIndex = Math.min(startIndex + productsPerPage, totalMatches);
+
+      // Hide all items first, then show only the matched ones for this page
+      allItems.forEach(function (item) { item.style.display = 'none'; });
+      for (let i = startIndex; i < endIndex; i++) {
+        if (matchedItems[i]) {
+          matchedItems[i].style.display = 'block';
+        }
+      }
+
+      // Render Pagination
+      if (totalPages > 1) {
+        paginationWrapper.style.display = 'flex';
+        paginationSummary.textContent = 'Showing ' + (startIndex + 1) + '\u2013' + endIndex + ' of ' + totalMatches + ' products';
+
+        let navHtml = '';
+
+        if (currentPage > 1) {
+          navHtml += '<button type="button" class="cntire-pag-btn" data-page="' + (currentPage - 1) + '">\u2190 Prev</button>';
+        } else {
+          navHtml += '<button type="button" class="cntire-pag-btn disabled" disabled>\u2190 Prev</button>';
+        }
+
+        for (let p = 1; p <= totalPages; p++) {
+          if (p === currentPage) {
+            navHtml += '<button type="button" class="cntire-pag-btn active">' + p + '</button>';
+          } else {
+            navHtml += '<button type="button" class="cntire-pag-btn" data-page="' + p + '">' + p + '</button>';
+          }
+        }
+
+        if (currentPage < totalPages) {
+          navHtml += '<button type="button" class="cntire-pag-btn" data-page="' + (currentPage + 1) + '">Next \u2192</button>';
+        } else {
+          navHtml += '<button type="button" class="cntire-pag-btn disabled" disabled>Next \u2192</button>';
+        }
+
+        paginationNav.innerHTML = navHtml;
+
+        paginationNav.querySelectorAll('.cntire-pag-btn[data-page]').forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            const pageNum = parseInt(this.getAttribute('data-page'), 10);
+            renderPage(pageNum);
+            container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          });
+        });
+      } else {
+        paginationWrapper.style.display = 'none';
+      }
+    }
+
+    function doSearch(query, page) {
+      page = page || 1;
+      currentQuery = (query || '').trim().toLowerCase();
+
+      if (currentQuery.length > 0) {
+        clearBtn.style.display = 'block';
+        termSpan.textContent = '"' + query + '"';
+
+        matchedItems = allItems.filter(function (item) {
+          return isMatch(item.getAttribute('data-keywords'), currentQuery);
+        });
+
+        countSpan.textContent = matchedItems.length;
+      } else {
+        clearBtn.style.display = 'none';
+        matchedItems = [];
+      }
+
+      renderPage(page);
+    }
+
+    // Input listener (live search debounced)
+    let debounceTimeout;
+    input.addEventListener('input', function() {
+      clearTimeout(debounceTimeout);
+      debounceTimeout = setTimeout(function () {
+        doSearch(input.value);
+      }, 250);
+    });
+
+    // Form submit listener
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      doSearch(input.value);
+    });
+
+    // Clear search listener
+    clearBtn.addEventListener('click', function() {
+      input.value = '';
+      doSearch('');
+      input.focus();
+    });
+
+    if (resetBtn) {
+      resetBtn.addEventListener('click', function() {
+        input.value = '';
+        doSearch('');
+      });
+    }
+
+    if (noResultsResetBtn) {
+      noResultsResetBtn.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href === '#' || !href) {
+          e.preventDefault();
+          input.value = '';
+          doSearch('');
+        }
+      });
+    }
+
+    // Tag links listener
+    container.querySelectorAll('.tag-link').forEach(function (link) {
+      link.addEventListener('click', function(e) {
+        const kw = this.getAttribute('data-keyword') || this.textContent.trim();
+        if (kw && kw !== '#') {
+          e.preventDefault();
+          input.value = kw;
+          doSearch(kw);
+          container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // Initial check: if URL has keyword parameter e.g., ?keyword=... or ?q=...
+    const urlParams = new URLSearchParams(window.location.search);
+    const initialKw = urlParams.get('keyword') || urlParams.get('q');
+    if (initialKw) {
+      input.value = initialKw;
+      doSearch(initialKw);
+    } else {
+      doSearch('');
+    }
+
+  })();
+});
 </script>
 
 {% schema %}
-{ "name": "CnTire Search", "presets": [{ "name": "CnTire Search" }] }
+{
+  "name": "CnTire Keyword Search",
+  "tag": "section",
+  "class": "section-cntire-keyword-search",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "🔍 What are you looking for?"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Search by tire size, SKU, equipment model, or keyword"
+    },
+    {
+      "type": "text",
+      "id": "placeholder_text",
+      "label": "Search Input Placeholder",
+      "default": "e.g. LK-23-AB, PCR 205/55R16, Self-Sealing Machine..."
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Source Collection",
+      "info": "Select collection to search within. Defaults to all products if empty."
+    },
+    {
+      "type": "range",
+      "id": "products_per_page",
+      "min": 2,
+      "max": 24,
+      "step": 2,
+      "default": 8,
+      "label": "Products per page"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "default": 4,
+      "label": "Grid columns (Desktop)"
+    },
+    {
+      "type": "header",
+      "content": "No Results Settings"
+    },
+    {
+      "type": "url",
+      "id": "no_results_url",
+      "label": "No Results Button Link",
+      "default": "/collections/all"
+    },
+    {
+      "type": "text",
+      "id": "no_results_button_label",
+      "label": "No Results Button Label",
+      "default": "View All Products"
+    },
+    {
+      "type": "header",
+      "content": "Browse Tags"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_browse_tags",
+      "label": "Show Browse Tags",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "browse_tags_title",
+      "label": "Browse Tags Label",
+      "default": "Or browse by:"
+    },
+    {
+      "type": "header",
+      "content": "Section Colors & Padding"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#F5F5F5"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 60
+    }
+  ],
+  "blocks": [
+    {
+      "type": "tag",
+      "name": "Browse Tag Chip",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Tag Display Label",
+          "default": "Passenger Tires"
+        },
+        {
+          "type": "text",
+          "id": "keyword",
+          "label": "Filter Keyword",
+          "info": "Keyword to search for when clicked. Defaults to label if blank."
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link URL (Optional)",
+          "info": "Leave as # to perform search filter on page."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "CnTire Keyword Search",
+      "blocks": [
+        {
+          "type": "tag",
+          "settings": {
+            "label": "Passenger Tires",
+            "keyword": "Passenger Tires"
+          }
+        },
+        {
+          "type": "tag",
+          "settings": {
+            "label": "Tire Changers",
+            "keyword": "Tire Changers"
+          }
+        },
+        {
+          "type": "tag",
+          "settings": {
+            "label": "Self-Sealing",
+            "keyword": "Self-Sealing"
+          }
+        },
+        {
+          "type": "tag",
+          "settings": {
+            "label": "Bulk Order",
+            "keyword": "Bulk Order"
+          }
+        },
+        {
+          "type": "tag",
+          "settings": {
+            "label": "Used Tires",
+            "keyword": "Used Tires"
+          }
+        }
+      ]
+    }
+  ]
+}
 {% endschema %}
