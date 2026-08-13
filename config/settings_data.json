@@ -11,6 +11,7 @@
   "current": {
     "logo": "shopify://shop_images/CnTire.com.png",
     "logo_width": 200,
+    "favicon": "shopify://shop_images/CnTire.com_09_51335b4e-5d18-4b78-83bb-973995abae78.png",
     "type_header_font": "roboto_n4",
     "heading_scale": 100,
     "type_body_font": "poppins_n4",
@@ -142,6 +143,13 @@
       }
     },
     "content_for_index": [],
+    "blocks": {
+      "14888816224872091922": {
+        "type": "shopify://apps/uplinkly-language-translate/blocks/language-translate/56a854bb-67ff-48c6-ba58-9185b4505de7",
+        "disabled": false,
+        "settings": {}
+      }
+    },
     "color_schemes": {
       "scheme-1": {
         "settings": {
@@ -207,6 +215,17 @@
           "button_label": "#ffffff",
           "secondary_button_label": "#121212",
           "shadow": "#121212"
+        }
+      },
+      "scheme-796037da-6bc8-48f1-98c8-b6fe5c258e59": {
+        "settings": {
+          "background": "#f5f5f5",
+          "background_gradient": "",
+          "text": "#1a1a2e",
+          "button": "#1a1a2e",
+          "button_label": "#ffffff",
+          "secondary_button_label": "#1a1a2e",
+          "shadow": "#1a1a2e"
         }
       }
     }
@@ -402,5 +421,10 @@
         }
       }
     }
+  },
+  "platform_customizations": {
+    "custom_css": [
+      "a.product__title > h2 {font-size: 24px; font-weight: 600;}"
+    ]
   }
 }

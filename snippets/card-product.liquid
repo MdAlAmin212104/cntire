@@ -46,6 +46,7 @@
 
     assign ct04_vendor = card_product.vendor | default: card_product.product_type | default: 'EQUIPMENT'
     assign quote_link = section.settings.quote_url | default: '/pages/rfq-center'
+    assign button_text = button_text | default: 'Get Quote'
     assign product_form_id = 'quick-add-' | append: section_id | append: card_product.id
   -%}
 
@@ -168,7 +169,7 @@
               </div>
             </quick-add-modal>
           {% endif %}
-          <a href="{{ quote_link }}" class="ct04-quote">Get Quote</a>
+          <a href="{{ quote_link }}" class="ct04-quote">{{button_text}}</a>
         </div>
       </div>
     </div>

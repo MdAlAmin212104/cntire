@@ -55,8 +55,9 @@
     {% endif %}
     
     {% assign limit_count = section.settings.products_to_show | default: 8 %}
+    {% assign button_text = section.settings.quote_button_label %}
     {% for product in ct04_prods limit: limit_count %}
-      {% render 'card-product', card_product: product %}
+      {% render 'card-product', card_product: product, button_text: button_text  %}
     {% endfor %}
   </div>
 </section>

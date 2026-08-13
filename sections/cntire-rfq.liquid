@@ -19,6 +19,7 @@
 .rfq-note-{{ section.id }} { font-size: 12px; color: #888; margin-top: 8px; }
 .rfq-success-{{ section.id }} { grid-column: 1 / -1; background: #e8f7ee; border: 1px solid #4caf50; color: #1b5e20; padding: 16px 20px; border-radius: 8px; font-size: 14px; line-height: 1.6; margin-bottom: 20px; }
 .rfq-error-{{ section.id }} { grid-column: 1 / -1; background: #fdecea; border: 1px solid #e53935; color: #b71c1c; padding: 16px 20px; border-radius: 8px; font-size: 14px; margin-bottom: 20px; }
+.rfq-error-{{ section.id }} ul { margin: 8px 0 0; padding-left: 20px; }
 </style>
 
 <section class="rfq-section-{{ section.id }}">
@@ -45,7 +46,12 @@
           {% endif %}
           {% if form.errors %}
             <div class="rfq-error-{{ section.id }}">
-              ⚠️ Sorry, something went wrong. Please check the highlighted fields and try again.
+              ⚠️ Sorry, something went wrong. Please check the following:
+              <ul>
+                {% for field in form.errors %}
+                  <li>{{ form.errors.translated_fields[field] | capitalize }} {{ form.errors.messages[field] }}</li>
+                {% endfor %}
+              </ul>
             </div>
           {% endif %}
 
@@ -90,13 +96,17 @@
             {% if product_blocks.size > 0 %}
               <div class="rfq-field-{{ section.id }} rfq-full-{{ section.id }}">
                 <label>{{ section.settings.products_label }}</label>
-                <div class="rfq-checkbox-row-{{ section.id }}">
+                <div class="rfq-checkbox-row-{{ section.id }}" data-rfq-checkbox-group>
                   {% for block in product_blocks %}
                     <label class="rfq-check-item-{{ section.id }}" {{ block.shopify_attributes }}>
-                      <input type="checkbox" name="contact[products][]" value="{{ block.settings.label }}"> {{ block.settings.label }}
+                      <input type="checkbox" data-rfq-product-checkbox value="{{ block.settings.label }}"> {{ block.settings.label }}
                     </label>
                   {% endfor %}
                 </div>
+                <!-- Shopify's contact form rejects contact[products][] array fields
+                     ("Products is invalid"). We combine checked values into this single
+                     hidden field via JS right before submit instead. -->
+                <input type="hidden" name="contact[Products of Interest]" data-rfq-products-hidden value="">
               </div>
             {% endif %}
 
@@ -112,6 +122,31 @@
     </div>
   </div>
 </section>
+
+<script>
+(function() {
+  var sections = document.querySelectorAll('.rfq-section-{{ section.id }}');
+  sections.forEach(function(section) {
+    var checkboxes = section.querySelectorAll('[data-rfq-product-checkbox]');
+    var hiddenInput = section.querySelector('[data-rfq-products-hidden]');
+    var form = section.querySelector('form');
+    if (!checkboxes.length || !hiddenInput || !form) return;
+
+    function syncHiddenField() {
+      var selected = [];
+      checkboxes.forEach(function(cb) {
+        if (cb.checked) selected.push(cb.value);
+      });
+      hiddenInput.value = selected.join(', ');
+    }
+
+    checkboxes.forEach(function(cb) {
+      cb.addEventListener('change', syncHiddenField);
+    });
+    form.addEventListener('submit', syncHiddenField);
+  });
+})();
+</script>
 
 {% schema %}
 {

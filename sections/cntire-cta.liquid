@@ -34,7 +34,7 @@
         <h3>{{ section.settings.newsletter_title }}</h3>
       {% endif %}
 
-      {% form 'customer', id: 'CntireNewsletterForm', class: 'newsletter-form-wrap-{{ section.id }}' %}
+       {% form 'customer', class: 'newsletter-form' %}
         <input type="hidden" name="contact[tags]" value="newsletter">
 
         {% if form.posted_successfully? %}
@@ -55,8 +55,19 @@
               class="newsletter-input-{{ section.id }}"
               placeholder="{{ section.settings.email_placeholder }}"
               required
+              value="{{ form.email }}"
+              aria-required="true"
+              autocorrect="off"
+              autocapitalize="off"
               autocomplete="email"
-              value="{{ form.email }}">
+              {% if form.errors %}
+                autofocus
+                aria-invalid="true"
+                aria-describedby="Newsletter-error--{{ section.id }}"
+              {% elsif form.posted_successfully? %}
+                aria-describedby="Newsletter-success--{{ section.id }}"
+              {% endif %}
+            >
             <button type="submit" class="newsletter-btn-{{ section.id }}">{{ section.settings.subscribe_button_text }}</button>
           </div>
         {% endif %}

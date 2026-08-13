@@ -44,6 +44,66 @@
     "rfq_center_Fz3FpK": {
       "type": "RFQ-center",
       "blocks": {
+        "country_option_RJdq7N": {
+          "type": "country_option",
+          "settings": {
+            "country_name": "Saudi Arabia"
+          }
+        },
+        "country_option_BfpcQf": {
+          "type": "country_option",
+          "settings": {
+            "country_name": "UAE"
+          }
+        },
+        "country_option_yQRLA9": {
+          "type": "country_option",
+          "settings": {
+            "country_name": "Qatar"
+          }
+        },
+        "country_option_PcVawe": {
+          "type": "country_option",
+          "settings": {
+            "country_name": "Mexico"
+          }
+        },
+        "country_option_gXEdab": {
+          "type": "country_option",
+          "settings": {
+            "country_name": "Brazil"
+          }
+        },
+        "country_option_4FLk6z": {
+          "type": "country_option",
+          "settings": {
+            "country_name": "USA"
+          }
+        },
+        "country_option_wMNQxy": {
+          "type": "country_option",
+          "settings": {
+            "country_name": "Other"
+          }
+        },
+        "country_option_i9qnbQ": {
+          "type": "country_option",
+          "settings": {
+            "country_name": "Kenya"
+          }
+        },
+        "country_option_zK9ftA": {
+          "type": "country_option",
+          "settings": {
+            "country_name": "South Africa"
+          }
+        },
+        "country_option_WeYW69": {
+          "type": "country_option",
+          "settings": {
+            "country_name": "Nigeria"
+          }
+        },
         "product_option_b87YTA": {
           "type": "product_option",
           "settings": {
@@ -88,6 +148,16 @@
         }
       },
       "block_order": [
+        "country_option_RJdq7N",
+        "country_option_BfpcQf",
+        "country_option_yQRLA9",
+        "country_option_PcVawe",
+        "country_option_gXEdab",
+        "country_option_4FLk6z",
+        "country_option_wMNQxy",
+        "country_option_i9qnbQ",
+        "country_option_zK9ftA",
+        "country_option_WeYW69",
         "product_option_b87YTA",
         "product_option_x8BU9W",
         "product_option_bC8d9i",
@@ -109,9 +179,10 @@
         "contact_title": "Contact Us Directly",
         "contact_email_1": "sales@cntire.com",
         "contact_email_2": "rfq@cntire.com",
-        "contact_phone": "+86 136 8886 2192",
-        "heading_color": "#1A1A2E",
-        "accent_color": "#F26522",
+        "contact_phone1": "+86 191 2025 6088 (WeChat: Tires)",
+        "contact_phone2": "+86 191 2053 8573 (WeChat: Machines)",
+        "heading_color": "#1a1a2e",
+        "accent_color": "#f26522",
         "padding_top": 40,
         "padding_bottom": 40
       }

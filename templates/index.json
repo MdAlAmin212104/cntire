@@ -249,6 +249,37 @@
         "padding_bottom": 60
       }
     },
+    "video_GpaFBG": {
+      "type": "video",
+      "name": "t:sections.video.presets.name",
+      "settings": {
+        "heading": "",
+        "heading_size": "h1",
+        "enable_video_looping": true,
+        "video": "shopify://files/videos/LogiKit Tire warehouse 1.mp4",
+        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "description": "",
+        "full_width": true,
+        "color_scheme": "scheme-796037da-6bc8-48f1-98c8-b6fe5c258e59",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "cntire_hot_sellers_pQwDLi": {
+      "type": "cntire-hot-sellers",
+      "settings": {
+        "badge_text": "★ BEST SELLERS",
+        "title": "Auto Parts & Accessories",
+        "subheading": "",
+        "collection": "auto-parts-and-accessories",
+        "products_to_show": 8,
+        "quote_url": "/pages/rfq-center",
+        "quote_button_label": "Get Quote",
+        "background_color": "#f5f5f5",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
     "value_props_section_g7zFxf": {
       "type": "value-props-section",
       "blocks": {
@@ -492,8 +523,58 @@
         "padding_bottom": 60
       }
     },
+    "image_with_text_NtzL3N": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_HzXMpy": {
+          "type": "heading",
+          "settings": {
+            "heading": "What is CnTire.com?",
+            "heading_size": "h1"
+          }
+        },
+        "text_Ff8E4Q": {
+          "type": "text",
+          "settings": {
+            "text": "<p>CnTire.com is a global B2B and B2C marketplace specializing in tires, wheels, auto parts, OEM manufacturing, and international tire export.</p><p>Powered by LogiKit, it connects verified manufacturers, suppliers, wholesalers, and buyers worldwide, while providing self-sealing tire technology and global sourcing solutions.</p>",
+            "text_style": "body"
+          }
+        },
+        "button_Np9hEk": {
+          "type": "button",
+          "settings": {
+            "button_label": "Learn More",
+            "button_link": "shopify://pages/about-us",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_HzXMpy",
+        "text_Ff8E4Q",
+        "button_Np9hEk"
+      ],
+      "custom_css": [],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/CnTire.com_09_51335b4e-5d18-4b78-83bb-973995abae78.png",
+        "height": "adapt",
+        "desktop_image_width": "small",
+        "layout": "image_first",
+        "image_behavior": "none",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "scheme-796037da-6bc8-48f1-98c8-b6fe5c258e59",
+        "color_scheme": "scheme-796037da-6bc8-48f1-98c8-b6fe5c258e59",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
     "cntire_about_raJ68d": {
       "type": "cntire-about",
+      "disabled": true,
       "name": "CnTire About",
       "settings": {
         "logo": "shopify://shop_images/CnTire.com_09_51335b4e-5d18-4b78-83bb-973995abae78.png",
@@ -503,6 +584,152 @@
         "heading_color": "#1a1a2e",
         "padding_top": 40,
         "padding_bottom": 40
+      }
+    },
+    "rfq_center_9CXqgw": {
+      "type": "RFQ-center",
+      "blocks": {
+        "product_option_mmkcRd": {
+          "type": "product_option",
+          "settings": {
+            "label": "Self-Sealing Tires"
+          }
+        },
+        "product_option_mH8Bzp": {
+          "type": "product_option",
+          "settings": {
+            "label": "Passenger Car Tires"
+          }
+        },
+        "product_option_8akwVB": {
+          "type": "product_option",
+          "settings": {
+            "label": "Truck Tires"
+          }
+        },
+        "product_option_wNjBf9": {
+          "type": "product_option",
+          "settings": {
+            "label": "Tire Changers"
+          }
+        },
+        "product_option_YDU3Hf": {
+          "type": "product_option",
+          "settings": {
+            "label": "Wheel Balancers"
+          }
+        },
+        "product_option_YbG6ae": {
+          "type": "product_option",
+          "settings": {
+            "label": "Vulcanizers"
+          }
+        },
+        "product_option_6pwaNW": {
+          "type": "product_option",
+          "settings": {
+            "label": "Auto Parts"
+          }
+        },
+        "country_option_AMKCTf": {
+          "type": "country_option",
+          "settings": {
+            "country_name": "Nigeria"
+          }
+        },
+        "country_option_DGcqeT": {
+          "type": "country_option",
+          "settings": {
+            "country_name": "South Africa"
+          }
+        },
+        "country_option_Pzy48M": {
+          "type": "country_option",
+          "settings": {
+            "country_name": "Kenya"
+          }
+        },
+        "country_option_ryz6ww": {
+          "type": "country_option",
+          "settings": {
+            "country_name": "Saudi Arabia"
+          }
+        },
+        "country_option_Ar4Wjw": {
+          "type": "country_option",
+          "settings": {
+            "country_name": "UAE"
+          }
+        },
+        "country_option_LbXLDA": {
+          "type": "country_option",
+          "settings": {
+            "country_name": "Qatar"
+          }
+        },
+        "country_option_teCefU": {
+          "type": "country_option",
+          "settings": {
+            "country_name": "Mexico"
+          }
+        },
+        "country_option_MNBdCR": {
+          "type": "country_option",
+          "settings": {
+            "country_name": "Brazil"
+          }
+        },
+        "country_option_TyTar8": {
+          "type": "country_option",
+          "settings": {
+            "country_name": "USA"
+          }
+        },
+        "country_option_wUmaCH": {
+          "type": "country_option",
+          "settings": {
+            "country_name": "Other"
+          }
+        }
+      },
+      "block_order": [
+        "product_option_mmkcRd",
+        "product_option_mH8Bzp",
+        "product_option_8akwVB",
+        "product_option_wNjBf9",
+        "product_option_YDU3Hf",
+        "product_option_YbG6ae",
+        "product_option_6pwaNW",
+        "country_option_AMKCTf",
+        "country_option_DGcqeT",
+        "country_option_Pzy48M",
+        "country_option_ryz6ww",
+        "country_option_Ar4Wjw",
+        "country_option_LbXLDA",
+        "country_option_teCefU",
+        "country_option_MNBdCR",
+        "country_option_TyTar8",
+        "country_option_wUmaCH"
+      ],
+      "name": "CnTire RFQ Page",
+      "settings": {
+        "badge_text": "★ B2B CORE",
+        "title": "Request for Quote",
+        "subtitle": "Enjoy the best offered by us",
+        "success_message": "✅ Thank you for your inquiry! Your quote request has been submitted successfully. Our team will get back to you within 24 hours.",
+        "products_label": "Products Interested In",
+        "submit_text": "Submit Your Quote Request",
+        "why_title": "Why Request a Quote?",
+        "why_list": "Bulk pricing discounts\nOEM/ODM customization options\nContainer shipping rates\nDedicated account manager\nFlexible payment terms",
+        "contact_title": "Contact Us Directly",
+        "contact_email_1": "sales@cntire.com",
+        "contact_email_2": "rfq@cntire.com",
+        "contact_phone1": "+86 191 2053 8573 (WeChat: Machines)",
+        "contact_phone2": "+86 191 2053 8573 (WeChat: Machines)",
+        "heading_color": "#1a1a2e",
+        "accent_color": "#f26522",
+        "padding_top": 60,
+        "padding_bottom": 60
       }
     },
     "cntire_rfq_83aEUJ": {
@@ -840,6 +1067,7 @@
         "product_option_KErERf",
         "product_option_WdRNW3"
       ],
+      "disabled": true,
       "name": "CnTire RFQ",
       "settings": {
         "title": "Request for Quotation",
@@ -959,11 +1187,15 @@
     "cntire_search_6Mz4e8",
     "cntire_categories_TzXUM8",
     "cntire_hot_sellers_S4",
+    "video_GpaFBG",
+    "cntire_hot_sellers_pQwDLi",
     "value_props_section_g7zFxf",
     "tech_section_rNcyt8",
     "cn_tire_market_gqTXCW",
     "cntire_country_BBKYKP",
+    "image_with_text_NtzL3N",
     "cntire_about_raJ68d",
+    "rfq_center_9CXqgw",
     "cntire_rfq_83aEUJ",
     "cntire_testimonials_mJQNRU",
     "cntire_cta_Bt9QcL"

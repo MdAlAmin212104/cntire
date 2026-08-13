@@ -22,7 +22,12 @@
           {% else %}
             {% if form.errors %}
               <div class="rfq-error-{{ section.id }}">
-                ⚠️ Sorry, something went wrong. Please check the highlighted fields and try again.
+                ⚠️ Sorry, something went wrong. Please check the following:
+                <ul style="margin: 8px 0 0; padding-left: 20px;">
+                  {% for field in form.errors %}
+                    <li>{{ form.errors.translated_fields[field] | capitalize }} {{ form.errors.messages[field] }}</li>
+                  {% endfor %}
+                </ul>
               </div>
             {% endif %}
 
@@ -51,16 +56,11 @@
                 <label>Country/Region <span class="required-{{ section.id }}">*</span></label>
                 <select name="contact[country]" required>
                   <option value="">Select your country</option>
-                  <option value="Nigeria">Nigeria</option>
-                  <option value="South Africa">South Africa</option>
-                  <option value="Kenya">Kenya</option>
-                  <option value="Saudi Arabia">Saudi Arabia</option>
-                  <option value="UAE">UAE</option>
-                  <option value="Qatar">Qatar</option>
-                  <option value="Mexico">Mexico</option>
-                  <option value="Brazil">Brazil</option>
-                  <option value="USA">USA</option>
-                  <option value="Other">Other</option>
+                  {% for block in section.blocks %}
+                    {% if block.type == 'country_option' %}
+                      <option value="{{ block.settings.country_name }}" {{ block.shopify_attributes }}>{{ block.settings.country_name }}</option>
+                    {% endif %}
+                  {% endfor %}
                 </select>
               </div>
               <div class="form-group-{{ section.id }}">
@@ -79,15 +79,20 @@
             {% if section.blocks.size > 0 %}
               <div class="form-group-{{ section.id }}">
                 <label>{{ section.settings.products_label }}</label>
-                <div class="checkbox-group-{{ section.id }}">
+                <div class="checkbox-group-{{ section.id }}" data-rfq-checkbox-group>
                   {% for block in section.blocks %}
                     {% if block.type == 'product_option' %}
                       <label class="checkbox-item-{{ section.id }}" {{ block.shopify_attributes }}>
-                        <input type="checkbox" name="contact[products][]" value="{{ block.settings.label }}"> {{ block.settings.label }}
+                        <input type="checkbox" data-rfq-product-checkbox value="{{ block.settings.label }}"> {{ block.settings.label }}
                       </label>
                     {% endif %}
                   {% endfor %}
                 </div>
+                <!-- This hidden input is what actually gets submitted to Shopify.
+                     Shopify's contact form rejects contact[products][] array fields
+                     (causes "Products is invalid"), so we combine the checked values
+                     into one comma-separated string here via JS before submit. -->
+                <input type="hidden" name="contact[Products interested in]" data-rfq-products-hidden value="">
               </div>
             {% endif %}
 
@@ -111,11 +116,11 @@
             {% if section.settings.why_list != blank %}
               <ul>
                 {% assign why_lines = section.settings.why_list | split: "\n" %}
-{% for line in why_lines %}
-  {% if line != blank %}
-    <li>✓ {{ line | strip }}</li>
-  {% endif %}
-{% endfor %}
+                {% for line in why_lines %}
+                  {% if line != blank %}
+                    <li>✓ {{ line | strip }}</li>
+                  {% endif %}
+                {% endfor %}
               </ul>
             {% endif %}
           </div>
@@ -125,7 +130,8 @@
             <h3>{{ section.settings.contact_title }}</h3>
             {% if section.settings.contact_email_1 != blank %}<p>📧 {{ section.settings.contact_email_1 }}</p>{% endif %}
             {% if section.settings.contact_email_2 != blank %}<p>📧 {{ section.settings.contact_email_2 }}</p>{% endif %}
-            {% if section.settings.contact_phone != blank %}<p>📞 {{ section.settings.contact_phone }}</p>{% endif %}
+            {% if section.settings.contact_phone1 != blank %}<p>☎  {{ section.settings.contact_phone1 }}</p>{% endif %}
+            {% if section.settings.contact_phone2 != blank %}<p>☎  {{ section.settings.contact_phone2 }}</p>{% endif %}
           </div>
         {% endif %}
       </div>
@@ -294,6 +300,33 @@
 }
 </style>
 
+<script>
+(function() {
+  var section = document.currentScript.closest('.rfq-page-{{ section.id }}');
+  if (!section) return;
+
+  var checkboxes = section.querySelectorAll('[data-rfq-product-checkbox]');
+  var hiddenInput = section.querySelector('[data-rfq-products-hidden]');
+  var form = section.querySelector('form');
+
+  function syncHiddenField() {
+    var selected = [];
+    checkboxes.forEach(function(cb) {
+      if (cb.checked) selected.push(cb.value);
+    });
+    hiddenInput.value = selected.join(', ');
+  }
+
+  checkboxes.forEach(function(cb) {
+    cb.addEventListener('change', syncHiddenField);
+  });
+
+  if (form) {
+    form.addEventListener('submit', syncHiddenField);
+  }
+})();
+</script>
+
 {% schema %}
 {
   "name": "CnTire RFQ Page",
@@ -374,7 +407,13 @@
     },
     {
       "type": "text",
-      "id": "contact_phone",
+      "id": "contact_phone1",
+      "label": "Phone",
+      "default": "+86 136 8886 2192"
+    },
+    {
+      "type": "text",
+      "id": "contact_phone2",
       "label": "Phone",
       "default": "+86 136 8886 2192"
     },
@@ -431,9 +470,21 @@
           "default": "New product option"
         }
       ]
+    },
+    {
+      "type": "country_option",
+      "name": "Country option",
+      "settings": [
+        {
+          "type": "text",
+          "id": "country_name",
+          "label": "Country name",
+          "default": "Country"
+        }
+      ]
     }
   ],
-  "max_blocks": 16,
+  "max_blocks":50,
   "presets": [
     {
       "name": "CnTire RFQ Page",
@@ -444,7 +495,17 @@
         { "type": "product_option", "settings": { "label": "Tire Changers" } },
         { "type": "product_option", "settings": { "label": "Wheel Balancers" } },
         { "type": "product_option", "settings": { "label": "Vulcanizers" } },
-        { "type": "product_option", "settings": { "label": "Auto Parts" } }
+        { "type": "product_option", "settings": { "label": "Auto Parts" } },
+        { "type": "country_option", "settings": { "country_name": "Nigeria" } },
+        { "type": "country_option", "settings": { "country_name": "South Africa" } },
+        { "type": "country_option", "settings": { "country_name": "Kenya" } },
+        { "type": "country_option", "settings": { "country_name": "Saudi Arabia" } },
+        { "type": "country_option", "settings": { "country_name": "UAE" } },
+        { "type": "country_option", "settings": { "country_name": "Qatar" } },
+        { "type": "country_option", "settings": { "country_name": "Mexico" } },
+        { "type": "country_option", "settings": { "country_name": "Brazil" } },
+        { "type": "country_option", "settings": { "country_name": "USA" } },
+        { "type": "country_option", "settings": { "country_name": "Other" } },
       ]
     }
   ]
