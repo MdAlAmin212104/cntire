@@ -128,8 +128,8 @@
         {% if section.settings.contact_title != blank %}
           <div>
             <h3>{{ section.settings.contact_title }}</h3>
-            {% if section.settings.contact_email_1 != blank %}<p>📧 {{ section.settings.contact_email_1 }}</p>{% endif %}
-            {% if section.settings.contact_email_2 != blank %}<p>📧 {{ section.settings.contact_email_2 }}</p>{% endif %}
+            {% if section.settings.contact_email_1 != blank %}<p class="ct-footer-col"><a class="ct-footer-mail" href="mailto:{{ section.settings.contact_email_1 }}">📧 {{ section.settings.contact_email_1 }}</a></p>{% endif %}
+            {% if section.settings.contact_email_2 != blank %}<p class="ct-footer-col"><a class="ct-footer-mail" href="mailto:{{ section.settings.contact_email_2 }}">📧 {{ section.settings.contact_email_2 }}</a></p>{% endif %}
             {% if section.settings.contact_phone1 != blank %}<p>☎  {{ section.settings.contact_phone1 }}</p>{% endif %}
             {% if section.settings.contact_phone2 != blank %}<p>☎  {{ section.settings.contact_phone2 }}</p>{% endif %}
           </div>
@@ -297,6 +297,14 @@
   .rfq-container-{{ section.id }} { grid-template-columns: 1fr; }
   .form-row-{{ section.id }} { grid-template-columns: 1fr; }
   .checkbox-group-{{ section.id }} { grid-template-columns: 1fr; }
+}
+
+.ct-footer-mail{
+  color: #555555!important;
+}
+.ct-footer-mail:hover{
+  color: #f26522!important;
+  text-decoration: underline;
 }
 </style>
 
