@@ -1489,12 +1489,9 @@ document.addEventListener('click', function(e) {
     }
   }
 
-  var addUrl = '/cart/add.js';
+  var addUrl = '/cart/add';
   if (window.routes && window.routes.cart_add_url) {
     addUrl = window.routes.cart_add_url;
-    if (!addUrl.endsWith('.js')) {
-      addUrl = addUrl + '.js';
-    }
   }
 
   fetch(addUrl, {
@@ -1529,12 +1526,12 @@ document.addEventListener('click', function(e) {
       countEl.setAttribute('data-count', res.item_count);
     }
 
-    if (cartEl && typeof cartEl.renderContents === 'function') {
+    if (cartEl && typeof cartEl.renderContents === 'function' && res.sections) {
       if (cartEl.classList.contains('is-empty')) {
         cartEl.classList.remove('is-empty');
       }
       cartEl.renderContents(res);
-    } else if (typeof cartEl?.open === 'function') {
+    } else if (cartEl && typeof cartEl.open === 'function') {
       cartEl.open();
     } else {
       window.location.href = (window.routes && window.routes.cart_url) ? window.routes.cart_url : '/cart';
