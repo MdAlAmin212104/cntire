@@ -83,12 +83,14 @@
 .ct04-rating{font-size:12px;margin-bottom:8px}
 .ct04-price{font-size:18px;font-weight:700;color:#1A1A2E;margin-bottom:4px}
 .ct04-was{font-size:12px;color:#999;margin-bottom:12px}
-.ct04-btns{display:flex;gap:8px;margin-top:auto}
-.ct04-cart{flex:1;background:#1A1A2E;color:#fff;border:none;padding:10px;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;text-align:center}
-.ct04-cart:hover{background:#F26522}
-.ct04-cart:disabled{opacity:.7;cursor:wait}
-.ct04-quote{flex:1;background:#fff;color:#1A1A2E;border:2px solid #1A1A2E;padding:10px;border-radius:6px;font-size:13px;font-weight:600;text-decoration:none;text-align:center;transition:all .2s;display:inline-flex;align-items:center;justify-content:center}
-.ct04-quote:hover{background:#1A1A2E;color:#fff}
+.ct04-btns{display:flex!important;margin-top:auto!important;width:100%!important;align-items:stretch!important;box-sizing:border-box!important}
+.ct04-btns>button,.ct04-btns>a,.ct04-btns>modal-opener,.ct04-btns>.ct04-modal-opener,.ct04-modal-opener{flex:1 1 100%!important;width:100%!important;max-width:100%!important;min-width:0!important;height:40px!important;min-height:40px!important;max-height:40px!important;box-sizing:border-box!important;display:flex!important;margin:0!important;padding:0!important}
+.ct04-cart{flex:1 1 100%!important;width:100%!important;min-width:0!important;height:40px!important;min-height:40px!important;max-height:40px!important;box-sizing:border-box!important;background:#1A1A2E!important;color:#fff!important;border:none!important;padding:0 12px!important;border-radius:6px!important;font-size:13px!important;font-weight:600!important;cursor:pointer!important;transition:all .2s!important;text-align:center!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important;line-height:1!important;margin:0!important}
+.ct04-cart:hover{background:#F26522!important}
+.ct04-cart:disabled{opacity:.7!important;cursor:wait!important}
+.ct04-cart span{white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important;font-size:13px!important}
+.ct04-cart .loading__spinner.hidden{display:none!important}
+quick-add-modal:not([open]){display:none!important}
 @media(max-width:1200px){.ct-s04-grid{grid-template-columns:repeat(3,1fr)!important}}
 @media(max-width:900px){.ct-s04-grid{grid-template-columns:repeat(2,1fr)!important}
 @media(max-width:600px){.ct-s04-grid{grid-template-columns:1fr!important}}

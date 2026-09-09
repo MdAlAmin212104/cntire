@@ -147,30 +147,32 @@
                 </span>
               </button>
             </modal-opener>
-            <quick-add-modal id="QuickAdd-{{ card_product.id }}" class="quick-add-modal">
-              <div
-                role="dialog"
-                aria-label="{{ 'products.product.choose_product_options' | t: product_name: card_product.title | escape }}"
-                aria-modal="true"
-                class="quick-add-modal__content global-settings-popup"
-                tabindex="-1"
-              >
-                <button
-                  id="ModalClose-{{ card_product.id }}"
-                  type="button"
-                  class="quick-add-modal__toggle"
-                  aria-label="{{ 'accessibility.close' | t }}"
-                >
-                  <span class="svg-wrapper">
-                    {{- 'icon-close.svg' | inline_asset_content -}}
-                  </span>
-                </button>
-                <div id="QuickAddInfo-{{ card_product.id }}" class="quick-add-modal__content-info"></div>
-              </div>
-            </quick-add-modal>
           {% endif %}
-          <a href="{{ quote_link }}" class="ct04-quote">{{button_text}}</a>
         </div>
+
+        {% if card_product.available and card_product.has_only_default_variant == false and card_product.variants.size > 1 %}
+          <quick-add-modal id="QuickAdd-{{ card_product.id }}" class="quick-add-modal">
+            <div
+              role="dialog"
+              aria-label="{{ 'products.product.choose_product_options' | t: product_name: card_product.title | escape }}"
+              aria-modal="true"
+              class="quick-add-modal__content global-settings-popup"
+              tabindex="-1"
+            >
+              <button
+                id="ModalClose-{{ card_product.id }}"
+                type="button"
+                class="quick-add-modal__toggle"
+                aria-label="{{ 'accessibility.close' | t }}"
+              >
+                <span class="svg-wrapper">
+                  {{- 'icon-close.svg' | inline_asset_content -}}
+                </span>
+              </button>
+              <div id="QuickAddInfo-{{ card_product.id }}" class="quick-add-modal__content-info"></div>
+            </div>
+          </quick-add-modal>
+        {% endif %}
       </div>
     </div>
   </product-component>
@@ -197,7 +199,6 @@
       <div class="ct04-was">Wholesale Available</div>
       <div class="ct04-btns">
         <button class="ct04-cart" type="button" disabled>Add to Cart</button>
-        <a href="/pages/rfq-center" class="ct04-quote">Get Quote</a>
       </div>
     </div>
   </div>
