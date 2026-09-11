@@ -46,7 +46,7 @@
           }
         },
         "sp_request_a_quote_add_product_to_quote_button_bkENPj": {
-          "type": "shopify://apps/sp-request-a-quote/blocks/add-product-to-quote-button/019a3441-fea6-7e7b-ada9-3c4f6e8c5569",
+          "type": "shopify://apps/sp-request-a-quote-rfq/blocks/add-product-to-quote-button/019a3441-fea6-7e7b-ada9-3c4f6e8c5569",
           "settings": {
             "button_text": "Add to Quote",
             "button_background_color": "#000000",

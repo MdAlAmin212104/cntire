@@ -144,7 +144,8 @@
                     >
                       <div>
                         <span class="facets__summary-label">
-                          {{- filter.label | escape }}
+                          {% comment %} {{- filter.label | escape }} {% endcomment %}
+                           Availability
                           {%- if filter_type == 'vertical' -%}
                             <span class="facets__selected{% if filter.active_values.size == 0 %} hidden{% endif %}">
                               ({{ filter.active_values.size }})</span
@@ -311,7 +312,8 @@
                   >
                     <summary class="facets__summary caption-large focus-offset">
                       <div>
-                        <span>{{ filter.label | escape }}</span>
+                        {% comment %} <span>{{ filter.label | escape }}</span> {% endcomment %}
+                        <span>Price</span>
                         {{- 'icon-caret.svg' | inline_asset_content -}}
                       </div>
                     </summary>
